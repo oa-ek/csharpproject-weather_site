@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u0438\\Repository\\csharpproject-weather_site\\src\\Weather_site.Core\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4A4F1BEE-EC55-476B-8106-9DC6455CA95E}|Weather_site.Core\\Weather_site.Core.csproj|d:\\\u043F\u0440\u043E\u0435\u043A\u0442\u0438\\repository\\csharpproject-weather_site\\src\\weather_site.core\\weather_site.core\\context\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4A4F1BEE-EC55-476B-8106-9DC6455CA95E}|Weather_site.Core\\Weather_site.Core.csproj|solutionrelative:weather_site.core\\context\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u0438\\Repository\\csharpproject-weather_site\\src\\Weather_site.Core\\Weather_site.Core\\Context\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "Weather_site.Core\\Context\\ApplicationDbContext.cs",
+              "ToolTip": "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u0438\\Repository\\csharpproject-weather_site\\src\\Weather_site.Core\\Weather_site.Core\\Context\\ApplicationDbContext.cs",
+              "RelativeToolTip": "Weather_site.Core\\Context\\ApplicationDbContext.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACQAAAAvAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-08T11:23:51.175Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
