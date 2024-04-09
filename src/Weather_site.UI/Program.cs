@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Weather_site.UI.Data;
+using Weather_site.Core.Context;
 
 namespace Weather_site.UI
 {

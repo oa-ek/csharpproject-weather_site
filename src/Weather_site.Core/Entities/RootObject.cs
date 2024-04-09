@@ -8,10 +8,11 @@ using System.Threading.Tasks;
 
 namespace Weather_site.Core.Entities
 {
-    public class RootObject
+    public class RootObject : IEntity<Guid>
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public Guid Id { get; set; } = Guid.NewGuid();
         public Coord coord { get; set; }
         public List<Weather> weather { get; set; }
         public string @base { get; set; }

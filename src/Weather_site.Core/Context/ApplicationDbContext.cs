@@ -2,13 +2,13 @@
 using Microsoft.EntityFrameworkCore;
 using Weather_site.Core.Entities;
 
-namespace Weather_site.UI.Data
+namespace Weather_site.Core.Context
 {
     public class ApplicationDbContext : DbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
-        { 
+        {
         }
 
         public DbSet<Clouds> Clouds => Set<Clouds>();
@@ -16,7 +16,7 @@ namespace Weather_site.UI.Data
         public DbSet<Coord> Coords => Set<Coord>();
 
         public DbSet<Main> Mains => Set<Main>();
-            
+
         public DbSet<ResultViewModel> ResultViewModels => Set<ResultViewModel>();
 
         public DbSet<RootObject> RootObjects => Set<RootObject>();
