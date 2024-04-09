@@ -1,7 +1,12 @@
-﻿namespace Weather_site.Core.Entities
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Weather_site.Core.Entities
 {
     public class ResultViewModel
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string City { get; set; }
         public string Country { get; set; }
         public string Lat { get; set; }

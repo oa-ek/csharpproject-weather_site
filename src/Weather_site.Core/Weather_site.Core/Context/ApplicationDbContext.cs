@@ -1,11 +1,10 @@
 ﻿using Azure.Core.GeoJson;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Weather_site.Core.Entities;
 
 namespace Weather_site.UI.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : DbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
