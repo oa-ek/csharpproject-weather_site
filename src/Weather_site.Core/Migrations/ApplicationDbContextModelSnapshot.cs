@@ -32,7 +32,7 @@ namespace Weather_site.Core.Migrations
 
                     b.HasKey("all");
 
-                    b.ToTable("Clouds");
+                    b.ToTable("Clouds", (string)null);
                 });
 
             modelBuilder.Entity("Weather_site.Core.Entities.Coord", b =>
@@ -46,7 +46,7 @@ namespace Weather_site.Core.Migrations
 
                     b.HasKey("lon");
 
-                    b.ToTable("Coords");
+                    b.ToTable("Coords", (string)null);
                 });
 
             modelBuilder.Entity("Weather_site.Core.Entities.Main", b =>
@@ -72,7 +72,7 @@ namespace Weather_site.Core.Migrations
 
                     b.HasKey("temp");
 
-                    b.ToTable("Mains");
+                    b.ToTable("Mains", (string)null);
                 });
 
             modelBuilder.Entity("Weather_site.Core.Entities.ResultViewModel", b =>
@@ -123,7 +123,7 @@ namespace Weather_site.Core.Migrations
 
                     b.HasKey("City");
 
-                    b.ToTable("ResultViewModels");
+                    b.ToTable("ResultViewModels", (string)null);
                 });
 
             modelBuilder.Entity("Weather_site.Core.Entities.RootObject", b =>
@@ -181,7 +181,7 @@ namespace Weather_site.Core.Migrations
 
                     b.HasIndex("windspeed");
 
-                    b.ToTable("RootObjects");
+                    b.ToTable("RootObjects", (string)null);
                 });
 
             modelBuilder.Entity("Weather_site.Core.Entities.Sys", b =>
@@ -207,7 +207,7 @@ namespace Weather_site.Core.Migrations
 
                     b.HasKey("type");
 
-                    b.ToTable("Sys");
+                    b.ToTable("Sys", (string)null);
                 });
 
             modelBuilder.Entity("Weather_site.Core.Entities.Weather", b =>
@@ -237,7 +237,7 @@ namespace Weather_site.Core.Migrations
 
                     b.HasIndex("RootObjectid");
 
-                    b.ToTable("Weathers");
+                    b.ToTable("Weathers", (string)null);
                 });
 
             modelBuilder.Entity("Weather_site.Core.Entities.Wind", b =>
@@ -251,7 +251,7 @@ namespace Weather_site.Core.Migrations
 
                     b.HasKey("speed");
 
-                    b.ToTable("Winds");
+                    b.ToTable("Winds", (string)null);
                 });
 
             modelBuilder.Entity("Weather_site.Core.Entities.RootObject", b =>
