@@ -1,32 +1,73 @@
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
-using Weather_site.UI.Models;
+using System;
+using System.Net.Http;
+using System.Text.Json;
+using Weather_site.Core.Entities;
 
 namespace Weather_site.UI.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
-
-        public IActionResult Index()
+        public ActionResult Weather()
         {
             return View();
         }
 
-        public IActionResult Privacy()
+        public ActionResult Index()
         {
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public ActionResult About()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            ViewBag.Message = "Your application description page.";
+            return View();
+        }
+
+        public ActionResult Contact()
+        {
+            ViewBag.Message = "Your contact page.";
+            return View();
+        }
+
+        [HttpPost]
+        public string WeatherDetail(string City)
+        {
+            string appId = "8113fcc5a7494b0518bd91ef3acc074f";
+            string url = $"http://api.openweathermap.org/data/2.5/weather?q={City}&units=metric&cnt=1&APPID={appId}";
+
+            using (var client = new HttpClient())
+            {
+                var response = client.GetAsync(url).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    var json = response.Content.ReadAsStringAsync().Result;
+                    var weatherInfo = JsonSerializer.Deserialize<RootObject>(json);
+
+                    var rslt = new ResultViewModel
+                    {
+                        Country = weatherInfo.sys.country,
+                        City = weatherInfo.name,
+                        Lat = Convert.ToString(weatherInfo.coord.lat),
+                        Lon = Convert.ToString(weatherInfo.coord.lon),
+                        Description = weatherInfo.weather[0].description,
+                        Humidity = Convert.ToString(weatherInfo.main.humidity),
+                        Temp = Convert.ToString(weatherInfo.main.temp),
+                        TempFeelsLike = Convert.ToString(weatherInfo.main.feels_like),
+                        TempMax = Convert.ToString(weatherInfo.main.temp_max),
+                        TempMin = Convert.ToString(weatherInfo.main.temp_min),
+                        WeatherIcon = weatherInfo.weather[0].icon
+                    };
+
+                    var jsonstring = JsonSerializer.Serialize(rslt);
+                    return jsonstring;
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            }
         }
     }
 }
+
