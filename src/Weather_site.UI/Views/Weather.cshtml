@@ -1,5 +1,5 @@
 ﻿@{    
-    ViewBag.Title = "Weather";    
+    ViewBag.Title = "";    
 }    
 
 <h1>Search City and Get Weather Forecast</h1>    
@@ -78,7 +78,7 @@
                         $("#lblTempMax").text(data.TempMax);    
                         $("#lblTempMin").text(data.TempMin);    
                         $("#imgWeatherIconUrl").attr("src", "http://openweathermap.org/img/w/" + data.WeatherIcon + ".png");    
-                    },    
+                    } 
                     error: function () {    
                         alert("Error fetching weather data.");    
                     }    

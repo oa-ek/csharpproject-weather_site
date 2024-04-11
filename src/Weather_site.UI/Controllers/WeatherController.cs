@@ -14,7 +14,7 @@ namespace Weather_site.UI.Controllers
         public string WeatherDetail(string City)
         {
             string appId = "8113fcc5a7494b0518bd91ef3acc074f";
-            string url = $"http://api.openweathermap.org/data/2.5/weather?q={City}&units=metric&cnt=1&APPID={appId}";
+            string url = $"http://api.openweathermap.org/data/2.5/weather?q={City}&appid={appId}";
 
             using (var client = new HttpClient())
             {
@@ -50,3 +50,4 @@ namespace Weather_site.UI.Controllers
         }
     }
 }
+//JsonSerializer
