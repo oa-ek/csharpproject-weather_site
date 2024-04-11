@@ -30,8 +30,7 @@ namespace Weather_site.UI.Controllers
             return View();
         }
     
-        
-      
+       
     }
 }
 

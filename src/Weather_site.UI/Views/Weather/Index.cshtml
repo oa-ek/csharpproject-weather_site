@@ -5,14 +5,11 @@
 <h1>Search City and Get Weather Forecast</h1>
 
 <div>
-    
-    <form asp-controller="Weather" asp-action="WeatherDetail" method="post">
-        <strong>City Name:</strong><input id="txtCity" type="text"/>
-        <br />
-        <br />
+    <strong>City Name:</strong><input id="txtCity" type="text" />
+    <br />
+    <br />
 
-        <button id="btnSubmit">Get Weather Forecast</button>
-    </form>
+    <button id="btnSubmit">Get Weather Forecast</button>
 </div>
 
 
@@ -58,6 +55,7 @@
 
     </table>
 </div>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
     $(document).ready(function () {
@@ -65,10 +63,11 @@
             var cityname = $("#txtCity").val();
             if (cityname.length > 0) {
                 $.ajax({
-                    url: "http://localhost:7016/Home/WeatherDetail?City=" + cityname,
+                    url: `https://localhost:7016/Weather/WeatherDetail?City=${cityname}`,
+    
                     type: "POST",
-                    success: function (jsonstring) {
-                        var data = JSON.parse(jsonstring);
+                    success: function (rsltval) {
+                        var data = JSON.parse(rsltval);
                         console.log(data);
                         $("#lblCity").text(data.City);
                         $("#lblCountry").text(data.Country);

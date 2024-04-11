@@ -15,8 +15,8 @@ namespace Weather_site.Core.Entities
         public string Humidity { get; set; }
         public string TempFeelsLike { get; set; }
         public string Temp { get; set; }
-        public string TempMax { get; set; }
-        public string TempMin { get; set; }
+        public double TempMax { get; set; }
+        public double TempMin { get; set; }
         public string WeatherIcon { get; set; }
     }
 }
