@@ -19,7 +19,7 @@ namespace Weather_site.Core.Entities
         public Main main { get; set; }
         public int visibility { get; set; }
         public Wind wind { get; set; }
-        public Clouds clouds { get; set; }
+        public RootObject clouds { get; set; }
         public int dt { get; set; }
         public Sys sys { get; set; }
         public int timezone { get; set; }

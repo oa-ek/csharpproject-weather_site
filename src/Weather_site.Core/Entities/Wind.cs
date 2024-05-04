@@ -12,6 +12,7 @@ namespace Weather_site.Core.Entities
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public Guid Id { get; set; } = Guid.NewGuid();
         public double speed { get; set; }
         public int deg { get; set; }
     }

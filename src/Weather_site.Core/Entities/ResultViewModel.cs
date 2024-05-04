@@ -7,6 +7,7 @@ namespace Weather_site.Core.Entities
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public Guid Id { get; set; } = Guid.NewGuid();
         public string City { get; set; }
         public string Country { get; set; }
         public string Lat { get; set; }

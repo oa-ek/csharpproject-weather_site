@@ -11,7 +11,7 @@ namespace Weather_site.Core.Context
         {
         }
 
-        public DbSet<Clouds> Clouds => Set<Clouds>();
+        public DbSet<RootObject> Clouds => Set<RootObject>();
 
         public DbSet<Coord> Coords => Set<Coord>();
 
