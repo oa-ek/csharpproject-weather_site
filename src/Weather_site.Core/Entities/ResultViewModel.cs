@@ -3,10 +3,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Weather_site.Core.Entities
 {
-    public class ResultViewModel
+    public class ResultViewModel : IEntity<Guid>
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        
         public Guid Id { get; set; } = Guid.NewGuid();
         public string City { get; set; }
         public string Country { get; set; }

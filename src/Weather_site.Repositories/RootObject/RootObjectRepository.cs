@@ -20,14 +20,13 @@ namespace Weather_site.Repositories.RootObject
         public async override Task<IEnumerable<Core.Entities.RootObject>> GetAllAsync()
         {
             return await _ctx.RootObjects
-                .Include(x => x.Id)
-                .Include(x => x.coord)
-                .Include(x => x.weather)
-                .Include(x => x.@base)
-                .Include(x => x.main)
-                .Include(x => x.visibility)
-                .Include(x => x.)
-                .ToListAsync();
+                 .Include(x => x.coord)
+                 .Include(x => x.main)
+                 .Include(x => x.sys)
+                 .Include(x => x.weather)
+                 .Include(x => x.wind)
+                 .Include(x => x.all)
+                 .ToListAsync();
         }
     }
 }

@@ -11,9 +11,8 @@ namespace Weather_site.Core.Entities
 {
     public class Clouds : IEntity<Guid>
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; } = Guid.NewGuid();
         public int all { get; set; }
+        public ICollection<RootObject> objects { get; set; }
     }
 }

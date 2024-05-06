@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static Weather_site.Repositories.Common.IRepository;
-using Weather_site.Core.Entities;
 
-namespace Weather_site.Repositories.RootObject
+namespace Weather_site.Repositories.WeatherRepository
 {
-    public interface IRootObjectRepository : IRepository<Core.Entities.RootObject, Guid>
+    public interface IWeatherRepository : IRepository<Core.Entities.Weather, Guid>
     {
 
     }

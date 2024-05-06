@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace Weather_site.Core.Entities
 {
-    public class Wind
+    public class Wind : IEntity<Guid>
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; } = Guid.NewGuid();
         public double speed { get; set; }
         public int deg { get; set; }
+        public double Gust { get; set; }
+        public ICollection<RootObject> objects { get; set; }
     }
 }

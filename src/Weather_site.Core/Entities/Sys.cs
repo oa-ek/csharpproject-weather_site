@@ -8,14 +8,15 @@ using System.Threading.Tasks;
 
 namespace Weather_site.Core.Entities
 {
-    public class Sys
+    public class Sys : IEntity<Guid>
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+      
+        public Guid Id { get; set; } = Guid.NewGuid();
         public int type { get; set; }
         public string country { get; set; }
         public int sunrise { get; set; }
         public int sunset { get; set; }
+
+        public ICollection<RootObject> objects { get; set; }
     }
 }

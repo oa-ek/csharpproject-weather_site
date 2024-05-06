@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace Weather_site.Core.Entities
 {
-    public class Weather
+    public class Weather : IEntity<Guid>
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; } = Guid.NewGuid();
         public string main { get; set; }
         public string description { get; set; }
         public string icon { get; set; }
+
+        public ICollection<RootObject> objects { get; set; } 
     }
 }

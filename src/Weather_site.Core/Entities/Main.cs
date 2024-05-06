@@ -8,10 +8,9 @@ using System.Threading.Tasks;
 
 namespace Weather_site.Core.Entities
 {
-    public class Main
+    public class Main : IEntity<Guid>
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+       
         public Guid Id { get; set; } = Guid.NewGuid();
         public double temp { get; set; }
         public double feels_like { get; set; }
@@ -19,5 +18,8 @@ namespace Weather_site.Core.Entities
         public double temp_max { get; set; }
         public int pressure { get; set; }
         public int humidity { get; set; }
+        public int seaLevel { get; set; }
+        public int GroundLevel { get; set; }
+        public ICollection<RootObject> objects { get; set; }
     }
 }

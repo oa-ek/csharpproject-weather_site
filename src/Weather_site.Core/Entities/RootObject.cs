@@ -10,8 +10,7 @@ namespace Weather_site.Core.Entities
 {
     public class RootObject : IEntity<Guid>
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    
         public Guid Id { get; set; } = Guid.NewGuid();
         public Coord coord { get; set; }
         public List<Weather> weather { get; set; }
@@ -19,11 +18,10 @@ namespace Weather_site.Core.Entities
         public Main main { get; set; }
         public int visibility { get; set; }
         public Wind wind { get; set; }
-        public RootObject clouds { get; set; }
+        public Clouds all { get; set; }
         public int dt { get; set; }
         public Sys sys { get; set; }
         public int timezone { get; set; }
-        public int id { get; set; }
         public string name { get; set; }
         public int cod { get; set; }
     }

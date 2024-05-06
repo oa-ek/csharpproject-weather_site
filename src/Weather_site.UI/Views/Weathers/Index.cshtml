@@ -1,0 +1,66 @@
+﻿@using Weather_site.Core.Entities
+@using Weather_site.Repositories
+@model List<Weather>
+@{
+    var firstItem = Model.Count > 0 ? Model[0] : new Weather();
+}
+
+<h1>Weather Data</h1>
+@if (Model.Count == 0)
+{
+    <p>No weather data found</p>
+}
+else
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => firstItem.Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => firstItem.main)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => firstItem.description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => firstItem.icon)
+                </th>
+                <th>
+                    Edit
+                </th>
+                <th>
+                    Delete
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.main)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.icon)
+                    </td>
+                    <td>
+                        <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                    </td>
+                    <td>
+                        <form asp-action="Delete" enctype="multipart/form-data">
+                            <button class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
