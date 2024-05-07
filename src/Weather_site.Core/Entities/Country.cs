@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace Weather_site.Core.Entities
 {
-    public class Wind : IEntity<Guid>
+    public class Country : IEntity<Guid>
     {
         public Guid Id { get; set; } = Guid.NewGuid();
-        public double Speed {  get; set; }
-        public int Humidity { get; set; }
+        public string Name { get; set; }
 
-        public ICollection<Weather> Weathers { get; set; } = new List<Weather>();
+        public ICollection<City> Cities { get; set; } = new List<City>();
     }
 }

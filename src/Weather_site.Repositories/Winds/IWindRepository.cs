@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using static Weather_site.Repositories.Common.IRepository;
 using Weather_site.Core.Entities;
 
-namespace Weather_site.Repositories.RootObject
+namespace Weather_site.Repositories.Winds
 {
-    public interface IRootObjectRepository : IRepository<Core.Entities.RootObject, Guid>
+    public interface IWindRepository : IRepository<Wind, Guid>
     {
 
     }

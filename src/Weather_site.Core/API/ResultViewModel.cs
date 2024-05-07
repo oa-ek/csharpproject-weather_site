@@ -1,11 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Weather_site.Core.Entities;
 
-namespace Weather_site.Core.Entities
+namespace Weather_site.Core.API
 {
     public class ResultViewModel : IEntity<Guid>
     {
-        
+
         public Guid Id { get; set; } = Guid.NewGuid();
         public string City { get; set; }
         public string Country { get; set; }

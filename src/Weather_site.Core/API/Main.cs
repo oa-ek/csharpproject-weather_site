@@ -5,12 +5,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Weather_site.Core.Entities;
 
-namespace Weather_site.Core.Entities
+namespace Weather_site.Core.API
 {
     public class Main : IEntity<Guid>
     {
-       
+
         public Guid Id { get; set; } = Guid.NewGuid();
         public double temp { get; set; }
         public double feels_like { get; set; }

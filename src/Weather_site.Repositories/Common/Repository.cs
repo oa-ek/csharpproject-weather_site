@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static Weather_site.Repositories.Common.IRepository;
-using Weather_site.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 using Weather_site.Core.Context;
+using Weather_site.Core.Entities;
 
 namespace Weather_site.Repositories.Common
 {

@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Weather_site.Core.Context;
+using Weather_site.Repositories;
 
 namespace Weather_site.UI
 {
@@ -19,7 +20,7 @@ namespace Weather_site.UI
             builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             builder.Services.AddControllersWithViews();
-
+            builder.Services.AddRepositories();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

@@ -1,6 +1,8 @@
 ﻿using Azure.Core.GeoJson;
 using Microsoft.EntityFrameworkCore;
+using Weather_site.Core.API;
 using Weather_site.Core.Entities;
+using Wind = Weather_site.Core.Entities.Wind;
 
 namespace Weather_site.Core.Context
 {
@@ -11,29 +13,19 @@ namespace Weather_site.Core.Context
         {
         }
 
-        public DbSet<RootObject> Clouds => Set<RootObject>();
+        public DbSet<Country> Countries { get; set; }
+        public DbSet<City> Cities { get; set; }
+        public DbSet<Wind> Winds { get; set; }
+        public DbSet<Weather> Weathers { get; set; }
 
-        public DbSet<Coord> Coords => Set<Coord>();
 
-        public DbSet<Main> Mains => Set<Main>();
-
-        public DbSet<ResultViewModel> ResultViewModels => Set<ResultViewModel>();
-
-        public DbSet<RootObject> RootObjects => Set<RootObject>();
-
-        public DbSet<Sys> Sys => Set<Sys>();
-
-        public DbSet<Weather> Weathers => Set<Weather>();
-
-        public DbSet<Wind> Winds => Set<Wind>();
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        /*protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             var connectionString = "Server=.;Database=WeatherDB;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
 
             optionsBuilder.UseSqlServer(connectionString);
 
             base.OnConfiguring(optionsBuilder);
-        }
+        }*/
     }
 }

@@ -5,14 +5,16 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Weather_site.Core.Entities;
 
-
-namespace Weather_site.Core.Entities
+namespace Weather_site.Core.API
 {
-    public class Clouds : IEntity<Guid>
+    public class Coord : IEntity<Guid>
     {
+
         public Guid Id { get; set; } = Guid.NewGuid();
-        public int all { get; set; }
+        public double lon { get; set; }
+        public double lat { get; set; }
         public ICollection<RootObject> objects { get; set; }
     }
 }
