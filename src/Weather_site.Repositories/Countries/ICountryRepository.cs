@@ -10,6 +10,6 @@ namespace Weather_site.Repositories.Countries
 {
     public interface ICountryRepository : IRepository<Country, Guid>
     {
-
+        public Task<Country> GetByName(string name);
     }
 }

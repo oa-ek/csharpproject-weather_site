@@ -10,9 +10,9 @@ namespace Weather_site.Core.Entities
     {
         public Guid Id { get; set; } = Guid.NewGuid();
         public City City { get; set; }
-        public int MinT { get; set; }
-        public int MaxT { get; set; }
-        public int FeelsLikeT { get; set; }
+        public double MinT { get; set; }
+        public double MaxT { get; set; }
+        public double FeelsLikeT { get; set; }
         public Wind Wind { get; set; }
         public DateTime Date { get; set; }
     }

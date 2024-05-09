@@ -28,7 +28,7 @@ namespace Weather_site.Core.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("CountryId")
+                    b.Property<Guid?>("CountryId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
@@ -69,14 +69,14 @@ namespace Weather_site.Core.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("FeelsLikeT")
-                        .HasColumnType("int");
+                    b.Property<double>("FeelsLikeT")
+                        .HasColumnType("float");
 
-                    b.Property<int>("MaxT")
-                        .HasColumnType("int");
+                    b.Property<double>("MaxT")
+                        .HasColumnType("float");
 
-                    b.Property<int>("MinT")
-                        .HasColumnType("int");
+                    b.Property<double>("MinT")
+                        .HasColumnType("float");
 
                     b.Property<Guid>("WindId")
                         .HasColumnType("uniqueidentifier");
@@ -96,8 +96,8 @@ namespace Weather_site.Core.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("Humidity")
-                        .HasColumnType("int");
+                    b.Property<double>("Humidity")
+                        .HasColumnType("float");
 
                     b.Property<double>("Speed")
                         .HasColumnType("float");
@@ -111,9 +111,7 @@ namespace Weather_site.Core.Migrations
                 {
                     b.HasOne("Weather_site.Core.Entities.Country", "Country")
                         .WithMany("Cities")
-                        .HasForeignKey("CountryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CountryId");
 
                     b.Navigation("Country");
                 });

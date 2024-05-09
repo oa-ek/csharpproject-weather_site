@@ -70,16 +70,10 @@
                         var data = JSON.parse(rsltval);
                         console.log(data);
                         $("#lblCity").text(data.City);
-                        $("#lblCountry").text(data.Country);
-                        $("#lblLat").text(data.Lat);
-                        $("#lblLon").text(data.Lon);
-                        $("#lblDescription").text(data.Description);
-                        $("#lblHumidity").text(data.Humidity);
-                        $("#lblTempFeelsLike").text(data.TempFeelsLike);
-                        $("#lblTemp").text(data.Temp);
-                        $("#lblTempMax").text(data.TempMax);
-                        $("#lblTempMin").text(data.TempMin);
-                        $("#imgWeatherIconUrl").attr("src", "http://openweathermap.org/img/w/" + data.WeatherIcon + ".png");
+                        $("#lblTempFeelsLike").text(data.FeelsLikeT);
+                        $("#lblTempMax").text(data.MaxT);
+                        $("#lblTempMin").text(data.MinT);
+
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
                         console.log("jqXHR: ", jqXHR);

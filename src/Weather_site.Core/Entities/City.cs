@@ -10,7 +10,7 @@ namespace Weather_site.Core.Entities
     {
         public Guid Id { get; set; } = Guid.NewGuid();
         public string Name { get; set; }
-        public Country Country { get; set; }
+        public Country? Country { get; set; }
 
         public ICollection<Weather> Weathers { get; set; } = new List<Weather>();
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,5 +13,15 @@ namespace Weather_site.Repositories.Countries
     public class CountryRepository : Repository<Country, Guid>, ICountryRepository
     {
         public CountryRepository(ApplicationDbContext ctx) : base(ctx) { }
+
+        public async Task<Country> GetByName(string countryName)
+        {
+            return await _ctx.Countries.FirstOrDefaultAsync(g => g.Name == countryName);
+        }
+
+        public async Task<Country> GetCountryByName(string countryName)
+        {
+            return await _ctx.Countries.FirstOrDefaultAsync(g => g.Name == countryName);
+        }
     }
 }

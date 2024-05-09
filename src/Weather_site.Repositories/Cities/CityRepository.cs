@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,5 +14,14 @@ namespace Weather_site.Repositories.Cities
     public class CityRepository : Repository<City, Guid>, ICityRepository
     {
         public CityRepository(ApplicationDbContext ctx) : base(ctx) { }
+        public async Task<City> GetByName(string cityName)
+        {
+            return await _ctx.Cities.FirstOrDefaultAsync(g => g.Name == cityName);
+        }
+
+        public async Task<City> GetCityByName(string cityName)
+        {
+            return await _ctx.Cities.FirstOrDefaultAsync(g => g.Name == cityName);
+        }
     }
 }

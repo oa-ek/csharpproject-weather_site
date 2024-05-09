@@ -1,8 +1,8 @@
-﻿@using Weather_site.Core.API
+﻿@using Weather_site.Core.Entities
 @using Weather_site.Repositories
-@model List<Weather_api>
+@model List<Weather>
 @{
-    var firstItem = Model.Count > 0 ? Model[0] : new Weather_api();
+    var firstItem = Model.Count > 0 ? Model[0] : new Weather();
 }
 
 <h1>Weather Data</h1>
@@ -19,13 +19,12 @@ else
                     @Html.DisplayNameFor(model => firstItem.Id)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => firstItem.main)
+                    @Html.DisplayNameFor(model => firstItem.City)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => firstItem.description)
+                    @Html.DisplayNameFor(model => firstItem.Wind)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => firstItem.icon)
                 </th>
                 <th>
                     Edit
@@ -43,13 +42,12 @@ else
                         @Html.DisplayFor(modelItem => item.Id)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.main)
+                        @Html.DisplayFor(modelItem => item.City)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.description)
+                        @Html.DisplayFor(modelItem => item.Wind)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.icon)
                     </td>
                     <td>
                         <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id">Edit</a>

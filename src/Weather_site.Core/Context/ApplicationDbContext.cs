@@ -1,6 +1,5 @@
 ﻿using Azure.Core.GeoJson;
 using Microsoft.EntityFrameworkCore;
-using Weather_site.Core.API;
 using Weather_site.Core.Entities;
 using Wind = Weather_site.Core.Entities.Wind;
 
@@ -19,13 +18,13 @@ namespace Weather_site.Core.Context
         public DbSet<Weather> Weathers { get; set; }
 
 
-        /*protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             var connectionString = "Server=.;Database=WeatherDB;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
 
             optionsBuilder.UseSqlServer(connectionString);
 
             base.OnConfiguring(optionsBuilder);
-        }*/
+        }
     }
 }

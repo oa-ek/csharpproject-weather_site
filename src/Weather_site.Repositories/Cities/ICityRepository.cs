@@ -10,6 +10,6 @@ namespace Weather_site.Repositories.Cities
 {
     public interface ICityRepository : IRepository<City, Guid>
     {
-
+        public Task<City> GetByName(string name);
     }
 }
