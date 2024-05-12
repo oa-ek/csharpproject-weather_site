@@ -3,11 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34321.82
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weather_site.Core", "Weather_site.Core\Weather_site.Core.csproj", "{4A4F1BEE-EC55-476B-8106-9DC6455CA95E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Weather_site.Core", "Weather_site.Core\Weather_site.Core.csproj", "{4A4F1BEE-EC55-476B-8106-9DC6455CA95E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weather_site.Repositories", "Weather_site.Repositories\Weather_site.Repositories.csproj", "{282DD3D5-CFE0-4EA0-8172-2F2D51051EFD}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weather_site.UI", "Weather_site.UI\Weather_site.UI.csproj", "{C022DF5E-2552-431C-A22D-5CF3C2B64C14}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Weather_site.Repositories", "Weather_site.Repositories\Weather_site.Repositories.csproj", "{282DD3D5-CFE0-4EA0-8172-2F2D51051EFD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +21,6 @@ Global
 		{282DD3D5-CFE0-4EA0-8172-2F2D51051EFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{282DD3D5-CFE0-4EA0-8172-2F2D51051EFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{282DD3D5-CFE0-4EA0-8172-2F2D51051EFD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C022DF5E-2552-431C-A22D-5CF3C2B64C14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C022DF5E-2552-431C-A22D-5CF3C2B64C14}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C022DF5E-2552-431C-A22D-5CF3C2B64C14}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C022DF5E-2552-431C-A22D-5CF3C2B64C14}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
