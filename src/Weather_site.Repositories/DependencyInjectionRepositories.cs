@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Weather_site.Repositories.Cities;
 using Weather_site.Repositories.Countries;
+using Weather_site.Repositories.Users;
 using Weather_site.Repositories.Weathers;
 using Weather_site.Repositories.Winds;
 
@@ -19,6 +20,7 @@ namespace Weather_site.Repositories
             services.AddScoped<ICityRepository, CityRepository>();
             services.AddScoped<IWindRepository, WindRepository>();
             services.AddScoped<IWeatherRepository, WeatherRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
         }
     }
 }
