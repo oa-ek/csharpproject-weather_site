@@ -116,7 +116,7 @@ namespace Weather_site.UI.Controllers
                             Id = CountryId,
                             Name = weatherInfo.country.Country
                         };
-                        _countryRepository.CreateAsync(country1);
+                        await _countryRepository.CreateAsync(country1);
                         country = country1;
 
                     }
@@ -133,7 +133,7 @@ namespace Weather_site.UI.Controllers
                             Country = country
                         };
 
-                        _cityRepository.CreateAsync(city1);
+                        await _cityRepository.CreateAsync(city1);
                         city = city1;
                     }
 
@@ -153,7 +153,7 @@ namespace Weather_site.UI.Controllers
 
                     };
                     await _weatherRepository.CreateAsync(weather);
-                    return RedirectToAction("GetFromAPI", "Weather", weather.Id);
+                    return RedirectToAction("GetFromAPI", "Weather", new { Id = WeatherId });
                 }
                 else
                 {

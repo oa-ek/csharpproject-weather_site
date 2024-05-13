@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,5 +14,14 @@ namespace Weather_site.Repositories.Weathers
     public class WeatherRepository : Repository<Weather, Guid>, IWeatherRepository
     {
         public WeatherRepository(AppDbContext ctx) : base(ctx) { }
+
+        public virtual async Task<Weather> GetAsync(Guid id)
+        {
+            return await _ctx.Set<Weather>()
+                .Include(w => w.City)
+                    .ThenInclude(c => c.Country)
+                .Include(w => w.Wind)
+                .FirstOrDefaultAsync(w => w.Id == id);
+        }
     }
 }
