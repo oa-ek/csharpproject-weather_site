@@ -12,7 +12,7 @@ namespace Weather_site.Repositories.Countries
 {
     public class CountryRepository : Repository<Country, Guid>, ICountryRepository
     {
-        public CountryRepository(ApplicationDbContext ctx) : base(ctx) { }
+        public CountryRepository(AppDbContext ctx) : base(ctx) { }
 
         public async Task<Country> GetByName(string countryName)
         {

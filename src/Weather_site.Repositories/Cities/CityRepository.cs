@@ -13,7 +13,7 @@ namespace Weather_site.Repositories.Cities
 {
     public class CityRepository : Repository<City, Guid>, ICityRepository
     {
-        public CityRepository(ApplicationDbContext ctx) : base(ctx) { }
+        public CityRepository(AppDbContext ctx) : base(ctx) { }
         public async Task<City> GetByName(string cityName)
         {
             return await _ctx.Cities.FirstOrDefaultAsync(g => g.Name == cityName);

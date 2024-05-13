@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace Weather_site.Repositories.Users
         private readonly UserManager<User> _userManager;
         private readonly RoleManager<IdentityRole<Guid>> _roleManager;
 
-        public UserRepository(ApplicationDbContext ctx,
+        public UserRepository(AppDbContext ctx,
             UserManager<User> userManager,
             RoleManager<IdentityRole<Guid>> roleManager) : base(ctx)
         {

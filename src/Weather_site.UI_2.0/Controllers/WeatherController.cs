@@ -27,7 +27,11 @@ namespace Weather_site.UI.Controllers
             _windRepository = windRepository;
         }
 
-
+        public async Task<IActionResult> GetFromAPI(Guid Id) 
+        {
+            var weather = await _weatherRepository.GetAsync(Id);
+            return View(weather);
+        }
 
         public async Task<IActionResult> Index()
         {
@@ -36,14 +40,9 @@ namespace Weather_site.UI.Controllers
         }
 
 
-        public async Task<IActionResult> IndexAPI(Weather weather)
+        public async Task<IActionResult> IndexAPI()
         {
-            if (weather == null)
-            {
-                weather = new Weather();
-            }
-            return View(weather);
-
+            return View();
         }
 
         public IActionResult Create()
@@ -141,8 +140,10 @@ namespace Weather_site.UI.Controllers
 
 
                     city = await _cityRepository.GetByName(weatherInfo.Name);
+                    Guid WeatherId = Guid.NewGuid();
                     var weather = new Weather
                     {
+                        Id = WeatherId,
                         City = city,
                         MinT = weatherInfo.main.minM,
                         MaxT = weatherInfo.main.maxH,
@@ -152,7 +153,7 @@ namespace Weather_site.UI.Controllers
 
                     };
                     await _weatherRepository.CreateAsync(weather);
-                    return RedirectToAction("IndexAPI", "Weather", weather);
+                    return RedirectToAction("GetFromAPI", "Weather", weather.Id);
                 }
                 else
                 {

@@ -1,4 +1,6 @@
 ﻿using Azure.Core.GeoJson;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using ProjectInit.Core.Context;
 using Weather_site.Core.Entities;
@@ -6,24 +8,18 @@ using Wind = Weather_site.Core.Entities.Wind;
 
 namespace Weather_site.Core.Context
 {
-    public class ApplicationDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        public AppDbContext(DbContextOptions<AppDbContext> options)
             : base(options)
         {
         }
 
-        protected override void OnModelCreating(ModelBuilder builder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Seed();
 
-            builder
-                 .Entity<Weather>()
-                 .HasMany(x => x.User)
-                 .WithMany(x => x.StudentProjects);
-
-            builder.Seed();
-
-            base.OnModelCreating(builder);
+            base.OnModelCreating(modelBuilder);
         }
 
         public DbSet<Country> Countries { get; set; }

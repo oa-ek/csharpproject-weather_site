@@ -13,10 +13,10 @@ namespace Weather_site.Repositories.Common
     public class Repository<TEntity, TKey> : IRepository<TEntity, TKey>
       where TEntity : class, IEntity<TKey>
     {
-        protected ApplicationDbContext _ctx;
+        protected AppDbContext _ctx;
         //protected DbSet<TEntity> dbSet;
 
-        public Repository(ApplicationDbContext ctx)
+        public Repository(AppDbContext ctx)
         {
             _ctx = ctx;
             //dbSet = _ctx.Set<TEntity>();

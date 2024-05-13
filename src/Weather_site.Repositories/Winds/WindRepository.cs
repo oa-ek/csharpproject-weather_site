@@ -12,6 +12,6 @@ namespace Weather_site.Repositories.Winds
 {
     public class WindRepository : Repository<Wind, Guid>, IWindRepository
     {
-        public WindRepository(ApplicationDbContext ctx) : base(ctx) { }
+        public WindRepository(AppDbContext ctx) : base(ctx) { }
     }
 }

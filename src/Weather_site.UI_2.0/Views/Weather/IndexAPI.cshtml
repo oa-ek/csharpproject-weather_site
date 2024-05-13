@@ -1,55 +1,13 @@
 ﻿@using Weather_site.Core.Entities 
-@model Weather
 @{ 
     ViewBag.Title = "Weather"; 
 } 
 
 <h1>Search City and Get Weather Forecast</h1> 
 
-<div> 
-    <strong>City Name:</strong><input id="txtCity" type="text" /> 
-    <br /> 
-    <br /> 
-
-    <button asp-action="WeatherDetail" asp-controller="Weather">Get Weather Forecast</button> 
-</div> 
 <form asp-action="WeatherDetail" asp-controller="Weather"> 
     <input id="txtCity" type="text" name="city" /> 
     <button type="submit">Get Weather Forecast</button> 
 </form> 
-
-<div> 
-    <h2>Weather Forecast</h2> 
-    @if (Model != null && Model.City != null && Model.City.Country != null)
-    { 
-            <table> 
-                <tr> 
-                    <td>Weather Symbol Icon <img id="imgWeatherIconUrl" src="" title="Weather Icon" /></td> 
-                </tr> 
-                <tr> 
-                    <td> 
-                        <strong>City: @Model.City.Name</strong> 
-                        <span id="lblCity"></span> 
-                    @if (!string.IsNullOrEmpty(Model.City.Country.Name))
-                    { 
-                                <span id="lblCountry">, @Model.City.Country.Name</span> 
-                    } 
-                    </td> 
-                </tr> 
-                <tr> 
-                    <td> 
-                        Temperature (Feels Like)<label id="lblTempFeelsLike">@Model.FeelsLikeT</label><br /> 
-
-                        Temperature (Min)<label id="lblTempMin">@Model.MinT</label><br /> 
-                        Temperature (Max)<label id="lblTempMax">@Model.MaxT</label><br /> 
-                    </td> 
-                </tr> 
-            </table> 
-    }
-    else
-    { 
-            <p>No weather data available.</p> 
-    } 
-</div> 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

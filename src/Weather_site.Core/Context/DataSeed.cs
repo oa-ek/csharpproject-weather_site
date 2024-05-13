@@ -15,8 +15,10 @@ namespace ProjectInit.Core.Context
         public static void Seed(this ModelBuilder builder)
         {
             var (adminID, userID) = _seedRoles(builder);
-            
-            var UserId = _seedUser(builder, adminID, userID);
+
+            var UkraineId = _seedCountry(builder);
+            var CitiesId = _seedCity(builder, UkraineId);
+            var UserId = _seedUser(builder, adminID, userID, CitiesId);
         }
 
         private static (Guid, Guid) _seedRoles(ModelBuilder builder)
@@ -47,7 +49,7 @@ namespace ProjectInit.Core.Context
 
         }
 
-        private static Guid _seedUser(ModelBuilder builder, Guid USER_ROLE_ID, Guid ADMIN_ROLE_ID)
+        private static Guid _seedUser(ModelBuilder builder, Guid USER_ROLE_ID, Guid ADMIN_ROLE_ID, Guid CityId)
         {
             var userId = Guid.NewGuid();
 
@@ -55,6 +57,7 @@ namespace ProjectInit.Core.Context
             {
                 Id = userId,
                 UserName = "admin@projects.kleban.page",
+                CityId = CityId,
                 EmailConfirmed = true,
                 NormalizedUserName = "admin@projects.kleban.page".ToUpper(),
                 Email = "admin@projects.kleban.page",
@@ -67,6 +70,7 @@ namespace ProjectInit.Core.Context
             {
                 Id = Guid.NewGuid(),
                 UserName = "teacher@projects.kleban.page",
+                CityId = CityId,
                 EmailConfirmed = true,
                 NormalizedUserName = "teacher@projects.kleban.page".ToUpper(),
                 Email = "teacher@projects.kleban.page",
@@ -97,6 +101,40 @@ namespace ProjectInit.Core.Context
               );
 
             return userId;
+        }
+
+        private static Guid _seedCity(ModelBuilder builder, Guid UKRAINE_ID)
+        {
+            var OSTROH_ID = Guid.NewGuid();
+            var RIVNE_ID = Guid.NewGuid();
+            builder.Entity<City>().HasData(
+                new City
+                {
+                    Id = OSTROH_ID,
+                    Name = "Osrtoh",
+                    CountryId = UKRAINE_ID,
+                },
+                new City
+                {
+                    Id = RIVNE_ID,
+                    Name = "Rivne",
+                    CountryId = UKRAINE_ID,
+                }
+            );
+            return RIVNE_ID;
+        }
+
+        private static Guid _seedCountry(ModelBuilder builder)
+        {
+            var UKRAINE_ID = Guid.NewGuid();
+            builder.Entity<Country>().HasData(
+                new Country
+                {
+                    Id = UKRAINE_ID,
+                    Name = "UA"
+                }
+                );
+            return UKRAINE_ID;
         }
     }
 }
