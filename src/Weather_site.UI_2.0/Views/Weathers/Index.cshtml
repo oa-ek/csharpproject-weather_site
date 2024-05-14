@@ -1,10 +1,10 @@
-﻿@using Weather_site.Core.Entities
-@using Weather_site.Repositories
-@model List<Weather>
+﻿
 @{
     var firstItem = Model.Count > 0 ? Model[0] : new Weather();
 }
-
+@using Weather_site.Core.Entities
+@using Weather_site.Repositories
+@model List<Weather>
 <h1>Weather Data</h1>
 @if (Model.Count == 0)
 {

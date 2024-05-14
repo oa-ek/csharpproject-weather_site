@@ -1,17 +1,17 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿
+@model Views_FutureWeather_Index
+@{
+    ViewBag.Title = "FutureWeather";
 }
 @using Azure.Core
 @using Weather_site.Core.Entities
-@using System.Globalization
-
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Прогноз погоди на 6 днів вперед</title>
+    <title>Прогноз погоди на 3 дні вперед</title>
 </head>
 <body>
-    <h1>Прогноз погоди на 6 днів вперед</h1>
+    <h1>Прогноз погоди на 3 дні вперед</h1>
 
     <form method="get">
         <label for="city">Введіть місто:</label>
@@ -46,24 +46,15 @@
 
                     @foreach (var item in data.list)
                     {
-                        DateTime date;
-                        if (DateTime.TryParseExact(item.dt_txt.ToString(), "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.None, out date))
-                        {
-                            string weatherDescription = item.weather[0].description;
-                            double temperature = Convert.ToDouble(item.main.temp);
+                        DateTime date = DateTime.Parse(item.dt_txt);
+                        string weatherDescription = item.weather[0].description;
+                        double temperature = Convert.ToDouble(item.main.temp);
 
-                            <tr>
-                                <td>@date.ToString("dd.MM.yyyy")</td>
-                                <td>@weatherDescription</td>
-                                <td>@temperature</td>
-                            </tr>
-                        }
-                        else
-                        {
-                            <tr>
-                                <td colspan="3">Невірний формат дати</td>
-                            </tr>
-                        }
+                        <tr>
+                            <td>@date.ToString("dd.MM.yyyy")</td>
+                            <td>@weatherDescription</td>
+                            <td>@temperature</td>
+                        </tr>
                     }
                 </table>
             }
