@@ -15,5 +15,6 @@ namespace Weather_site.Core.Entities
         public double FeelsLikeT { get; set; }
         public Wind Wind { get; set; }
         public DateTime Date { get; set; }
+        public string? Icon { get; set; }
     }
 }

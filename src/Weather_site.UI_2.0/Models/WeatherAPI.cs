@@ -12,6 +12,8 @@ namespace Weather_site.UI.Models
         public string Name { get; set; }
         [JsonPropertyName("sys")]
         public SysAPI country { get; set; }
+        [JsonPropertyName("icon")]
+        public string icon { get; set; }
 
 
 

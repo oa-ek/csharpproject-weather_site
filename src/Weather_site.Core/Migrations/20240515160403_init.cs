@@ -135,7 +135,8 @@ namespace Weather_site.Core.Migrations
                     MaxT = table.Column<double>(type: "float", nullable: false),
                     FeelsLikeT = table.Column<double>(type: "float", nullable: false),
                     WindId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Date = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Icon = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -244,22 +245,22 @@ namespace Weather_site.Core.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { new Guid("bcef6d56-07b9-4efb-86b0-543904b0c19f"), "bcef6d56-07b9-4efb-86b0-543904b0c19f", "User", "USER" },
-                    { new Guid("f9e2fd8c-78e8-4c44-b6fb-9c329c5c122d"), "f9e2fd8c-78e8-4c44-b6fb-9c329c5c122d", "Admin", "ADMIN" }
+                    { new Guid("6562f020-5d4e-491b-af2f-cfbbbc1c07d9"), "6562f020-5d4e-491b-af2f-cfbbbc1c07d9", "User", "USER" },
+                    { new Guid("d6f763bb-a3a5-4d74-812c-445eb43cbc6c"), "d6f763bb-a3a5-4d74-812c-445eb43cbc6c", "Admin", "ADMIN" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Countries",
                 columns: new[] { "Id", "Name" },
-                values: new object[] { new Guid("fcd027f8-ea94-423e-9ea7-3662f8b6746b"), "UA" });
+                values: new object[] { new Guid("bd1ad433-1897-4ee8-8d12-6b9b0817ee52"), "UA" });
 
             migrationBuilder.InsertData(
                 table: "Cities",
                 columns: new[] { "Id", "CountryId", "Name" },
                 values: new object[,]
                 {
-                    { new Guid("b45bdb7f-928a-419f-b690-44933dd8b6c7"), new Guid("fcd027f8-ea94-423e-9ea7-3662f8b6746b"), "Rivne" },
-                    { new Guid("eb3af436-b9c1-4591-af87-72df7ffe7238"), new Guid("fcd027f8-ea94-423e-9ea7-3662f8b6746b"), "Osrtoh" }
+                    { new Guid("2b0bf58c-7e72-4df2-b94f-f7f7259685bf"), new Guid("bd1ad433-1897-4ee8-8d12-6b9b0817ee52"), "Osrtoh" },
+                    { new Guid("ea72b864-185b-48ef-b635-a9c466614ef3"), new Guid("bd1ad433-1897-4ee8-8d12-6b9b0817ee52"), "Rivne" }
                 });
 
             migrationBuilder.InsertData(
@@ -267,8 +268,8 @@ namespace Weather_site.Core.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "CityId", "ConcurrencyStamp", "Email", "EmailConfirmed", "FullName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { new Guid("c7ab33b2-5684-4471-ab7f-21046db14aa6"), 0, new Guid("b45bdb7f-928a-419f-b690-44933dd8b6c7"), "5abaf8d7-96fa-4dac-935e-d35167f94bf8", "teacher@projects.kleban.page", true, "Іван Петренко", false, null, "TEACHER@PROJECTS.KLEBAN.PAGE", "TEACHER@PROJECTS.KLEBAN.PAGE", "AQAAAAIAAYagAAAAEJ6Vspgn6YDwtwq5YMq2YGyzsWr3z008x3uDTeg2kP9lC8nRJJpbQXyxd3UiTpFsLA==", null, false, "292c0c34-94f8-448f-a988-5b9001980468", false, "teacher@projects.kleban.page" },
-                    { new Guid("f0ea27d5-24d7-40b2-a9fb-289b0fd53022"), 0, new Guid("b45bdb7f-928a-419f-b690-44933dd8b6c7"), "db0aaa04-09d6-4e0b-a0fd-619da9d14876", "admin@projects.kleban.page", true, "Юрій Клебан", false, null, "ADMIN@PROJECTS.KLEBAN.PAGE", "ADMIN@PROJECTS.KLEBAN.PAGE", "AQAAAAIAAYagAAAAECKp4iwNSRG85dCJWmT1qFeHubOrVQd0yZSHoyZoTf6EAVa4OnsB758HFYcUCURm/w==", null, false, "1bc56735-262d-4dbc-8d54-023ba37980db", false, "admin@projects.kleban.page" }
+                    { new Guid("5b7c1d77-3df9-4376-bfa7-31deca53e518"), 0, new Guid("ea72b864-185b-48ef-b635-a9c466614ef3"), "c1083325-7dd9-4049-8c20-a543ca72fecb", "user@projects.kleban.page", true, "Іван Петренко", false, null, "USER@PROJECTS.KLEBAN.PAGE", "USER@PROJECTS.KLEBAN.PAGE", "AQAAAAIAAYagAAAAENWHW59cXQG34Wy3zsmYz/7yaLlXH0ku13IcYra2wIXrs1VtWzfZAYXxOzM2aacwsQ==", null, false, "ea5858b7-4ed4-4e12-8ab3-26f621734765", false, "user@projects.kleban.page" },
+                    { new Guid("8d498dac-6f83-4536-b2b6-1536ada30352"), 0, new Guid("ea72b864-185b-48ef-b635-a9c466614ef3"), "91a9a847-d287-48cd-8b0e-8b34e9dbd3b6", "admin@projects.kleban.page", true, "Юрій Клебан", false, null, "ADMIN@PROJECTS.KLEBAN.PAGE", "ADMIN@PROJECTS.KLEBAN.PAGE", "AQAAAAIAAYagAAAAEO6H2LQcNYdEdw3MHu6rJEA/Xnss4/QKLaBy5SmobimQpdTP3v14MQzxFM6c3D6jtQ==", null, false, "6a24c034-0fb3-4cb3-bf58-424524bd7cb6", false, "admin@projects.kleban.page" }
                 });
 
             migrationBuilder.InsertData(
@@ -276,8 +277,8 @@ namespace Weather_site.Core.Migrations
                 columns: new[] { "RoleId", "UserId" },
                 values: new object[,]
                 {
-                    { new Guid("bcef6d56-07b9-4efb-86b0-543904b0c19f"), new Guid("f0ea27d5-24d7-40b2-a9fb-289b0fd53022") },
-                    { new Guid("f9e2fd8c-78e8-4c44-b6fb-9c329c5c122d"), new Guid("f0ea27d5-24d7-40b2-a9fb-289b0fd53022") }
+                    { new Guid("6562f020-5d4e-491b-af2f-cfbbbc1c07d9"), new Guid("8d498dac-6f83-4536-b2b6-1536ada30352") },
+                    { new Guid("d6f763bb-a3a5-4d74-812c-445eb43cbc6c"), new Guid("8d498dac-6f83-4536-b2b6-1536ada30352") }
                 });
 
             migrationBuilder.CreateIndex(

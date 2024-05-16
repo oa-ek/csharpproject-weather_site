@@ -35,7 +35,7 @@ namespace Weather_site.Repositories.Users
                 EmailConfirmed = false,
                 NormalizedUserName = model.Email.ToUpper(),
                 NormalizedEmail = model.Email.ToUpper(),
-                Email = model.Email
+                Email = model.Email,
             };
 
             var result = await _userManager.CreateAsync(newUser, model.Password);

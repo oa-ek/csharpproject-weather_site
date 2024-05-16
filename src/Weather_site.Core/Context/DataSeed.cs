@@ -69,12 +69,12 @@ namespace ProjectInit.Core.Context
             var user = new User
             {
                 Id = Guid.NewGuid(),
-                UserName = "teacher@projects.kleban.page",
+                UserName = "user@projects.kleban.page",
                 CityId = CityId,
                 EmailConfirmed = true,
-                NormalizedUserName = "teacher@projects.kleban.page".ToUpper(),
-                Email = "teacher@projects.kleban.page",
-                NormalizedEmail = "teacher@projects.kleban.page".ToUpper(),
+                NormalizedUserName = "user@projects.kleban.page".ToUpper(),
+                Email = "user@projects.kleban.page",
+                NormalizedEmail = "user@projects.kleban.page".ToUpper(),
                 SecurityStamp = Guid.NewGuid().ToString(),
                 FullName = "Іван Петренко"
             };

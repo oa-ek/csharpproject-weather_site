@@ -1,63 +1,67 @@
 ﻿@{
     ViewData["Title"] = "Privacy Policy";
+    var cities = ViewBag.Cities as List<City>;
+    var winds = ViewBag.Winds as List<Wind>;
 }
 
 @using Weather_site.Core.Entities
-@model List<Weather>
-<h1>Weather Data</h1>
+@model Weather
 
-@if (Model == null || Model.Count == 0)
-{
-    <p>No weather data found</p>
-}
-else
-{
-    var firstItem = Model[0]; 
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => firstItem.Id)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => firstItem.City)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => firstItem.Wind)
-                </th>
-                <th></th>
-                <th>
-                    Edit
-                </th>
-                <th>
-                    Delete
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Id)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.City)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Wind)
-                    </td>
-                    <td></td>
-                    <td>
-                        <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
-                    </td>
-                    <td>
-                        <form asp-action="Delete" enctype="multipart/form-data">
-                            <button class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</button>
-                        </form>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+<h1>Новий проєкт</h1>
+
+
+<form asp-action="Create" asp-controller="Weather" enctype="multipart/form-data">
+
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="mb-3">
+                @Html.DisplayNameFor(model => model.City)
+                @Html.DropDownList("CityId", ViewBag.Cities as SelectList, "Оберіть місто", new { @class = "form-control" })
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                @Html.DisplayNameFor(model => model.MinT)
+                @Html.DropDownListFor(model => model.MinT, ViewBag.TemperatureList as SelectList, "Select Min Temperature", new { @class = "form-control" })
+                <span asp-validation-for="MinT" class="text-danger" />
+            </div>
+            <div class="mb-3">
+                @Html.DisplayNameFor(model => model.MaxT)
+                @Html.DropDownListFor(model => model.MaxT, ViewBag.TemperatureList as SelectList, "Select Max Temperature", new { @class = "form-control" })
+                <span asp-validation-for="MaxT" class="text-danger" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="mb-3">
+                @Html.DisplayNameFor(model => model.FeelsLikeT)
+                @Html.DropDownListFor(model => model.FeelsLikeT, ViewBag.TemperatureList as SelectList, "Select Feels Like Temperature", new { @class = "form-control" })
+                <span asp-validation-for="FeelsLikeT" class="text-danger" />
+            </div>
+            <div class="mb-3">
+                @Html.DisplayNameFor(model => model.Wind)
+                @Html.DropDownList("WindId", ViewBag.Winds as SelectList, "Select Wind", new { @class = "form-control" })
+                <span asp-validation-for="Wind" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-3">
+                @Html.DisplayNameFor(model => model.Date)
+                @Html.DropDownListFor(model => model.Date, ViewBag.DateList as SelectList, "Select Date", new { @class = "form-control" })
+                <span asp-validation-for="Date" class="text-danger" />
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <button class="btn btn-primary btn-block" style="width: 100% !important" type="submit">Зберегти</button>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

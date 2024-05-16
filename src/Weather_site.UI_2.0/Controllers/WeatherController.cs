@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System;
 using System.Net.Http;
 using Weather_site.UI.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Weather_site.UI.Controllers
 {
@@ -45,14 +46,21 @@ namespace Weather_site.UI.Controllers
             return View();
         }
 
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            return View();
+            var cities = await _cityRepository.GetAllAsync();
+            var winds = await _windRepository.GetAllAsync();
+
+            ViewBag.Cities = new SelectList(cities, "Id", "Name");
+            ViewBag.Winds = new SelectList(winds, "Id", "Speed");
+
+            return View(new Weather());
         }
         [HttpPost]
 
         public async Task<IActionResult> Create(Weather weather)
         {
+
             if (ModelState.IsValid)
             {
                 await _weatherRepository.CreateAsync(weather);
@@ -149,8 +157,8 @@ namespace Weather_site.UI.Controllers
                         MaxT = weatherInfo.main.maxH,
                         FeelsLikeT = weatherInfo.main.feels_like,
                         Wind = wind,
-                        Date = DateTime.Now
-
+                        Date = DateTime.Now,
+                        Icon = weatherInfo.icon 
                     };
                     await _weatherRepository.CreateAsync(weather);
                     return RedirectToAction("GetFromAPI", "Weather", new { Id = WeatherId });

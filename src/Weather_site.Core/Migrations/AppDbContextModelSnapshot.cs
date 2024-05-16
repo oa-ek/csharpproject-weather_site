@@ -52,15 +52,15 @@ namespace Weather_site.Core.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("f9e2fd8c-78e8-4c44-b6fb-9c329c5c122d"),
-                            ConcurrencyStamp = "f9e2fd8c-78e8-4c44-b6fb-9c329c5c122d",
+                            Id = new Guid("d6f763bb-a3a5-4d74-812c-445eb43cbc6c"),
+                            ConcurrencyStamp = "d6f763bb-a3a5-4d74-812c-445eb43cbc6c",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = new Guid("bcef6d56-07b9-4efb-86b0-543904b0c19f"),
-                            ConcurrencyStamp = "bcef6d56-07b9-4efb-86b0-543904b0c19f",
+                            Id = new Guid("6562f020-5d4e-491b-af2f-cfbbbc1c07d9"),
+                            ConcurrencyStamp = "6562f020-5d4e-491b-af2f-cfbbbc1c07d9",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -154,13 +154,13 @@ namespace Weather_site.Core.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = new Guid("f0ea27d5-24d7-40b2-a9fb-289b0fd53022"),
-                            RoleId = new Guid("bcef6d56-07b9-4efb-86b0-543904b0c19f")
+                            UserId = new Guid("8d498dac-6f83-4536-b2b6-1536ada30352"),
+                            RoleId = new Guid("6562f020-5d4e-491b-af2f-cfbbbc1c07d9")
                         },
                         new
                         {
-                            UserId = new Guid("f0ea27d5-24d7-40b2-a9fb-289b0fd53022"),
-                            RoleId = new Guid("f9e2fd8c-78e8-4c44-b6fb-9c329c5c122d")
+                            UserId = new Guid("8d498dac-6f83-4536-b2b6-1536ada30352"),
+                            RoleId = new Guid("d6f763bb-a3a5-4d74-812c-445eb43cbc6c")
                         });
                 });
 
@@ -207,14 +207,14 @@ namespace Weather_site.Core.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("eb3af436-b9c1-4591-af87-72df7ffe7238"),
-                            CountryId = new Guid("fcd027f8-ea94-423e-9ea7-3662f8b6746b"),
+                            Id = new Guid("2b0bf58c-7e72-4df2-b94f-f7f7259685bf"),
+                            CountryId = new Guid("bd1ad433-1897-4ee8-8d12-6b9b0817ee52"),
                             Name = "Osrtoh"
                         },
                         new
                         {
-                            Id = new Guid("b45bdb7f-928a-419f-b690-44933dd8b6c7"),
-                            CountryId = new Guid("fcd027f8-ea94-423e-9ea7-3662f8b6746b"),
+                            Id = new Guid("ea72b864-185b-48ef-b635-a9c466614ef3"),
+                            CountryId = new Guid("bd1ad433-1897-4ee8-8d12-6b9b0817ee52"),
                             Name = "Rivne"
                         });
                 });
@@ -236,7 +236,7 @@ namespace Weather_site.Core.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("fcd027f8-ea94-423e-9ea7-3662f8b6746b"),
+                            Id = new Guid("bd1ad433-1897-4ee8-8d12-6b9b0817ee52"),
                             Name = "UA"
                         });
                 });
@@ -317,39 +317,39 @@ namespace Weather_site.Core.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("f0ea27d5-24d7-40b2-a9fb-289b0fd53022"),
+                            Id = new Guid("8d498dac-6f83-4536-b2b6-1536ada30352"),
                             AccessFailedCount = 0,
-                            CityId = new Guid("b45bdb7f-928a-419f-b690-44933dd8b6c7"),
-                            ConcurrencyStamp = "db0aaa04-09d6-4e0b-a0fd-619da9d14876",
+                            CityId = new Guid("ea72b864-185b-48ef-b635-a9c466614ef3"),
+                            ConcurrencyStamp = "91a9a847-d287-48cd-8b0e-8b34e9dbd3b6",
                             Email = "admin@projects.kleban.page",
                             EmailConfirmed = true,
                             FullName = "Юрій Клебан",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@PROJECTS.KLEBAN.PAGE",
                             NormalizedUserName = "ADMIN@PROJECTS.KLEBAN.PAGE",
-                            PasswordHash = "AQAAAAIAAYagAAAAECKp4iwNSRG85dCJWmT1qFeHubOrVQd0yZSHoyZoTf6EAVa4OnsB758HFYcUCURm/w==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEO6H2LQcNYdEdw3MHu6rJEA/Xnss4/QKLaBy5SmobimQpdTP3v14MQzxFM6c3D6jtQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "1bc56735-262d-4dbc-8d54-023ba37980db",
+                            SecurityStamp = "6a24c034-0fb3-4cb3-bf58-424524bd7cb6",
                             TwoFactorEnabled = false,
                             UserName = "admin@projects.kleban.page"
                         },
                         new
                         {
-                            Id = new Guid("c7ab33b2-5684-4471-ab7f-21046db14aa6"),
+                            Id = new Guid("5b7c1d77-3df9-4376-bfa7-31deca53e518"),
                             AccessFailedCount = 0,
-                            CityId = new Guid("b45bdb7f-928a-419f-b690-44933dd8b6c7"),
-                            ConcurrencyStamp = "5abaf8d7-96fa-4dac-935e-d35167f94bf8",
-                            Email = "teacher@projects.kleban.page",
+                            CityId = new Guid("ea72b864-185b-48ef-b635-a9c466614ef3"),
+                            ConcurrencyStamp = "c1083325-7dd9-4049-8c20-a543ca72fecb",
+                            Email = "user@projects.kleban.page",
                             EmailConfirmed = true,
                             FullName = "Іван Петренко",
                             LockoutEnabled = false,
-                            NormalizedEmail = "TEACHER@PROJECTS.KLEBAN.PAGE",
-                            NormalizedUserName = "TEACHER@PROJECTS.KLEBAN.PAGE",
-                            PasswordHash = "AQAAAAIAAYagAAAAEJ6Vspgn6YDwtwq5YMq2YGyzsWr3z008x3uDTeg2kP9lC8nRJJpbQXyxd3UiTpFsLA==",
+                            NormalizedEmail = "USER@PROJECTS.KLEBAN.PAGE",
+                            NormalizedUserName = "USER@PROJECTS.KLEBAN.PAGE",
+                            PasswordHash = "AQAAAAIAAYagAAAAENWHW59cXQG34Wy3zsmYz/7yaLlXH0ku13IcYra2wIXrs1VtWzfZAYXxOzM2aacwsQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "292c0c34-94f8-448f-a988-5b9001980468",
+                            SecurityStamp = "ea5858b7-4ed4-4e12-8ab3-26f621734765",
                             TwoFactorEnabled = false,
-                            UserName = "teacher@projects.kleban.page"
+                            UserName = "user@projects.kleban.page"
                         });
                 });
 
@@ -367,6 +367,9 @@ namespace Weather_site.Core.Migrations
 
                     b.Property<double>("FeelsLikeT")
                         .HasColumnType("float");
+
+                    b.Property<string>("Icon")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("MaxT")
                         .HasColumnType("float");
