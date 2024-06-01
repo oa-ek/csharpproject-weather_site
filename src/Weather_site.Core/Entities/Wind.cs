@@ -12,6 +12,8 @@ namespace Weather_site.Core.Entities
         public double Speed {  get; set; }
         public double Humidity { get; set; }
 
+        public double Gust { get; set; }
+
         public ICollection<Weather> Weathers { get; set; } = new List<Weather>();
     }
 }

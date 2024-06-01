@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Weather_site.Core\Weather_site.Core.csproj" />
+    <ProjectReference Include="..\Weather_site.Repositories\Weather_site.Repositories.csproj" />
+    <ProjectReference Include="..\Weather_site.UI_2.0\Weather_site.UI_2.0.csproj" />
+  </ItemGroup>
+
+</Project>

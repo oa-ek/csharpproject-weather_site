@@ -7,7 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Weather_site.Core", "Weathe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Weather_site.Repositories", "Weather_site.Repositories\Weather_site.Repositories.csproj", "{282DD3D5-CFE0-4EA0-8172-2F2D51051EFD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weather_site.UI_2.0", "Weather_site.UI_2.0\Weather_site.UI_2.0.csproj", "{31F2B541-3B9B-4D82-A9E4-120383B88C29}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Weather_site.UI_2.0", "Weather_site.UI_2.0\Weather_site.UI_2.0.csproj", "{31F2B541-3B9B-4D82-A9E4-120383B88C29}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weather_site.API", "Weather_site.API\Weather_site.API.csproj", "{C8A3C6EA-6B07-4220-A00E-FDCC56DB8A4E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weather_site.Service", "Weather_site.Service\Weather_site.Service.csproj", "{127D1638-A1F6-41E5-83B1-4C3798E5513F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +31,14 @@ Global
 		{31F2B541-3B9B-4D82-A9E4-120383B88C29}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31F2B541-3B9B-4D82-A9E4-120383B88C29}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31F2B541-3B9B-4D82-A9E4-120383B88C29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8A3C6EA-6B07-4220-A00E-FDCC56DB8A4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8A3C6EA-6B07-4220-A00E-FDCC56DB8A4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8A3C6EA-6B07-4220-A00E-FDCC56DB8A4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8A3C6EA-6B07-4220-A00E-FDCC56DB8A4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{127D1638-A1F6-41E5-83B1-4C3798E5513F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{127D1638-A1F6-41E5-83B1-4C3798E5513F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{127D1638-A1F6-41E5-83B1-4C3798E5513F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{127D1638-A1F6-41E5-83B1-4C3798E5513F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

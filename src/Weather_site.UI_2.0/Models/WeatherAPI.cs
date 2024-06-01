@@ -12,9 +12,8 @@ namespace Weather_site.UI.Models
         public string Name { get; set; }
         [JsonPropertyName("sys")]
         public SysAPI country { get; set; }
-
-
-
+        [JsonPropertyName("icon")]
+        public string icon { get; set; }
     }
     public class MainAPI
     {
@@ -26,6 +25,12 @@ namespace Weather_site.UI.Models
         public double maxH { get; set; }
         [JsonPropertyName("feels_like")]
         public double feels_like { get; set; }
+        [JsonPropertyName("pressure")]
+        public int pressure { get; set; }
+        [JsonPropertyName("sea_level")]
+        public int sea_level { get; set; }
+        [JsonPropertyName("grnd_level")]
+        public int grnd_level { get; set; }
     }
     public class WindAPI
     {

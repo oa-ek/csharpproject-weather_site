@@ -20,7 +20,7 @@ namespace Weather_site.Repositories
             services.AddScoped<ICityRepository, CityRepository>();
             services.AddScoped<IWindRepository, WindRepository>();
             services.AddScoped<IWeatherRepository, WeatherRepository>();
-            /*services.AddScoped<IUserRepository, UserRepository>();*/
+           // services.AddScoped<IUserRepository, UserRepository>();
         }
     }
 }

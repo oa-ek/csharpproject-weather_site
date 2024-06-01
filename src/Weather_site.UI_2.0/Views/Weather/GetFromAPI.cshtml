@@ -17,7 +17,7 @@
     { 
                 <table> 
                     <tr> 
-                        <td>Weather Symbol Icon <img id="imgWeatherIconUrl" src="" title="Weather Icon" /></td> 
+                        <td>Weather Symbol Icon <img id="imgWeatherIconUrl" src="@Model.Icon" title="Weather Icon" /></td> 
                     </tr> 
                     <tr> 
                         <td> 
@@ -31,9 +31,13 @@
                     </tr> 
                     <tr> 
                         <td> 
-                            Temperature (Feels Like)<label id="lblTempFeelsLike"> @Model.FeelsLikeT</label><br /> 
-                            Temperature (Min)<label id="lblTempMin"> @Model.MinT</label><br /> 
-                            Temperature (Max)<label id="lblTempMax" >@Model.MaxT</label><br /> 
+                            Temperature: <label id="lblTemp">@Model.Temp</label><br />
+                            Temperature (Feels Like): <label id="lblTempFeelsLike"> @Model.FeelsLikeT</label><br />
+                            Temperature (Min): <label id="lblTempMin"> @Model.MinT</label><br /> 
+                            Temperature (Max): <label id="lblTempMax" >@Model.MaxT</label><br /> 
+                            Pressure: <label id="lblPressure" >@Model.Pressure</label><br /> 
+                           @*  Humidity: <label id="lblHumidity" >@Model.Wind.Humidity</label><br /> 
+                            Gust: <label id="lblGust" >@Model.Wind.Gust</label><br />  *@
                         </td> 
                     </tr> 
                 </table> 
