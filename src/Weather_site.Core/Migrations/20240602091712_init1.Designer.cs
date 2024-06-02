@@ -12,7 +12,7 @@ using Weather_site.Core.Context;
 namespace Weather_site.Core.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240601102409_init1")]
+    [Migration("20240602091712_init1")]
     partial class init1
     {
         /// <inheritdoc />
@@ -47,14 +47,14 @@ namespace Weather_site.Core.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("1309d82c-c443-41ce-9d61-89d42c4f15ad"),
-                            CountryId = new Guid("5cfd8905-2817-4a23-85f5-0c7e08cb5205"),
+                            Id = new Guid("a2906bca-763b-4c71-9677-d7ce582f6c6e"),
+                            CountryId = new Guid("7ef386e5-85bd-4934-9ec0-d116094b19b1"),
                             Name = "Osrtoh"
                         },
                         new
                         {
-                            Id = new Guid("d79df671-7133-40c6-8aeb-46262e4a65f8"),
-                            CountryId = new Guid("5cfd8905-2817-4a23-85f5-0c7e08cb5205"),
+                            Id = new Guid("33e4628d-2772-49fe-8a16-d63062b0c3d9"),
+                            CountryId = new Guid("7ef386e5-85bd-4934-9ec0-d116094b19b1"),
                             Name = "Rivne"
                         });
                 });
@@ -76,7 +76,7 @@ namespace Weather_site.Core.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("5cfd8905-2817-4a23-85f5-0c7e08cb5205"),
+                            Id = new Guid("7ef386e5-85bd-4934-9ec0-d116094b19b1"),
                             Name = "UA"
                         });
                 });
@@ -240,11 +240,13 @@ namespace Weather_site.Core.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Weather_site.Core.Entities.Wind", null)
+                    b.HasOne("Weather_site.Core.Entities.Wind", "Wind")
                         .WithMany("Weathers")
                         .HasForeignKey("WindId");
 
                     b.Navigation("City");
+
+                    b.Navigation("Wind");
                 });
 
             modelBuilder.Entity("Weather_site.Core.Entities.City", b =>

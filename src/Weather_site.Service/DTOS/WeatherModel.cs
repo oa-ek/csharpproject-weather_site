@@ -10,7 +10,12 @@ namespace Weather_site.API.DTOS
         public double MaxT { get; set; }
         public double FeelsLikeT { get; set; }
         public CityDTO City { get; set; }
-        
+        public string? Icon { get; set; }
+        public int Pressure { get; set; }
+        public int SeaLevel { get; set; }
+        public int GrndLevel { get; set; }
+        public WindDTO Wind { get; set; }
+        public DateTime Date { get; set; } = DateTime.Now;
     }
     public class WeatherAdd
     {
@@ -23,11 +28,12 @@ namespace Weather_site.API.DTOS
         public int Pressure { get; set; }
         public int SeaLevel { get; set; }
         public int GrndLevel { get; set; }
-
+        public DateTime Date { get; set; } = DateTime.Now;
+        public Guid WindId { get; set; }
     }
     public class CityDTO 
     {
-        public Guid Id { get; set; } 
+        public Guid Id { get; set; }
         public string Name { get; set; }
         public CountryDTO Country { get; set; }
 
@@ -37,5 +43,26 @@ namespace Weather_site.API.DTOS
         public Guid Id { get; set; }
         public string Name { get; set; }
     }
-
+    public class WindDTO
+    {
+        public Guid Id { get; set; }
+        public double Speed { get; set; }
+        public double Humidity { get; set; }
+        public double Gust { get; set; }
+    }
+    public class WindAdd
+    {
+        public double Speed { get; set; }
+        public double Humidity { get; set; }
+        public double Gust { get; set; }
+    }
+    public class CityAdd
+    {
+        public string Name { get; set; }
+        public Guid CountryId { get; set; }
+    }
+    public class CountryAdd
+    {
+        public string Name { get; set; }
+    }
 }

@@ -17,8 +17,11 @@ namespace Weather_site.Service
             CreateMap<Weather, WeatherModel>().ReverseMap();
             CreateMap<Weather, WeatherAdd>().ReverseMap();
             CreateMap<CityDTO, City>().ReverseMap();
+            CreateMap<City, CityAdd>().ReverseMap();
             CreateMap<CountryDTO, Country>().ReverseMap();
-
+            CreateMap<Country, CountryAdd>().ReverseMap();
+            CreateMap<WindDTO, Wind>().ReverseMap();
+            CreateMap<Wind, WindAdd>().ReverseMap();
         }
         
     }

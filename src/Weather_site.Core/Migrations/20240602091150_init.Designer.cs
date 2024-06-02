@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Weather_site.Core.Context;
 
@@ -11,9 +12,11 @@ using Weather_site.Core.Context;
 namespace Weather_site.Core.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240602091150_init")]
+    partial class init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,14 +47,14 @@ namespace Weather_site.Core.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("a2906bca-763b-4c71-9677-d7ce582f6c6e"),
-                            CountryId = new Guid("7ef386e5-85bd-4934-9ec0-d116094b19b1"),
+                            Id = new Guid("7067e7c1-f026-48dd-bf5e-c6c6654eb663"),
+                            CountryId = new Guid("4510dd92-816f-44d8-a084-e87f4a1aacde"),
                             Name = "Osrtoh"
                         },
                         new
                         {
-                            Id = new Guid("33e4628d-2772-49fe-8a16-d63062b0c3d9"),
-                            CountryId = new Guid("7ef386e5-85bd-4934-9ec0-d116094b19b1"),
+                            Id = new Guid("749837dd-7765-48ca-8097-406788f6cccf"),
+                            CountryId = new Guid("4510dd92-816f-44d8-a084-e87f4a1aacde"),
                             Name = "Rivne"
                         });
                 });
@@ -73,7 +76,7 @@ namespace Weather_site.Core.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("7ef386e5-85bd-4934-9ec0-d116094b19b1"),
+                            Id = new Guid("4510dd92-816f-44d8-a084-e87f4a1aacde"),
                             Name = "UA"
                         });
                 });
@@ -175,7 +178,7 @@ namespace Weather_site.Core.Migrations
                     b.Property<double>("Temp")
                         .HasColumnType("float");
 
-                    b.Property<Guid?>("WindId")
+                    b.Property<Guid>("WindId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
@@ -239,7 +242,9 @@ namespace Weather_site.Core.Migrations
 
                     b.HasOne("Weather_site.Core.Entities.Wind", "Wind")
                         .WithMany("Weathers")
-                        .HasForeignKey("WindId");
+                        .HasForeignKey("WindId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("City");
 

@@ -23,5 +23,12 @@ namespace Weather_site.Repositories.Cities
         {
             return await _ctx.Cities.FirstOrDefaultAsync(g => g.Name == cityName);
         }
+
+        public async Task<IEnumerable<City>> GetAllAsync()
+        {
+            return await _ctx.Cities
+                                 .Include(c => c.Country)
+                                 .ToListAsync();
+        }
     }
 }

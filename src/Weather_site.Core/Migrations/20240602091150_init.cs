@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Weather_site.Core.Migrations
 {
     /// <inheritdoc />
-    public partial class init1 : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -101,12 +101,12 @@ namespace Weather_site.Core.Migrations
                     MinT = table.Column<double>(type: "float", nullable: false),
                     MaxT = table.Column<double>(type: "float", nullable: false),
                     FeelsLikeT = table.Column<double>(type: "float", nullable: false),
+                    WindId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Icon = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Pressure = table.Column<int>(type: "int", nullable: false),
                     SeaLevel = table.Column<int>(type: "int", nullable: false),
-                    GrndLevel = table.Column<int>(type: "int", nullable: false),
-                    WindId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    GrndLevel = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -121,21 +121,22 @@ namespace Weather_site.Core.Migrations
                         name: "FK_Weathers_Winds_WindId",
                         column: x => x.WindId,
                         principalTable: "Winds",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
                 table: "Countries",
                 columns: new[] { "Id", "Name" },
-                values: new object[] { new Guid("5cfd8905-2817-4a23-85f5-0c7e08cb5205"), "UA" });
+                values: new object[] { new Guid("4510dd92-816f-44d8-a084-e87f4a1aacde"), "UA" });
 
             migrationBuilder.InsertData(
                 table: "Cities",
                 columns: new[] { "Id", "CountryId", "Name" },
                 values: new object[,]
                 {
-                    { new Guid("1309d82c-c443-41ce-9d61-89d42c4f15ad"), new Guid("5cfd8905-2817-4a23-85f5-0c7e08cb5205"), "Osrtoh" },
-                    { new Guid("d79df671-7133-40c6-8aeb-46262e4a65f8"), new Guid("5cfd8905-2817-4a23-85f5-0c7e08cb5205"), "Rivne" }
+                    { new Guid("7067e7c1-f026-48dd-bf5e-c6c6654eb663"), new Guid("4510dd92-816f-44d8-a084-e87f4a1aacde"), "Osrtoh" },
+                    { new Guid("749837dd-7765-48ca-8097-406788f6cccf"), new Guid("4510dd92-816f-44d8-a084-e87f4a1aacde"), "Rivne" }
                 });
 
             migrationBuilder.CreateIndex(

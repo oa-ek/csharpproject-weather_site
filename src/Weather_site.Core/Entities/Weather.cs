@@ -14,7 +14,7 @@ namespace Weather_site.Core.Entities
         public double MinT { get; set; }
         public double MaxT { get; set; }
         public double FeelsLikeT { get; set; }
-       // public Wind Wind { get; set; }
+        public Wind? Wind { get; set; }
         public DateTime Date { get; set; }
         public string? Icon { get; set; }
         public int Pressure {  get; set; }

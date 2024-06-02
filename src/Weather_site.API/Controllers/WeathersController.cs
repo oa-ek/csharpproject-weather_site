@@ -52,6 +52,7 @@ namespace Weather_site.API.Controllers
             {
                 var weather = _mapper.Map<Weather>(weatherCreateDto);
                 var city = await _cityRepository.GetAsync(weatherCreateDto.CityId);
+                var wind = await _windRepository.GetAsync(weatherCreateDto.WindId);
                 if (weather.Temp < -273.15)
                     return BadRequest("Temperature must be above absolute zero");
 
@@ -59,6 +60,7 @@ namespace Weather_site.API.Controllers
                     return BadRequest("City not found");
 
                 weather.City = city;
+                weather.Wind = wind;
                 await _weatherRepository.CreateAsync(weather);
 
                 if (!ModelState.IsValid)
