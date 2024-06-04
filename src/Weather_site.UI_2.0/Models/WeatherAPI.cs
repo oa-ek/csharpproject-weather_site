@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Weather_site.UI.Models
+namespace Weather_site.UI_2._0.Models
 {
     public class WeatherAPI
     {

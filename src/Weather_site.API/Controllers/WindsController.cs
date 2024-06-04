@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using Weather_site.API.DTOS;
 using Weather_site.Core.Entities;
 using Weather_site.Repositories.Winds;
-using Weather_site.UI.Models;
+using Weather_site.Service.DTOS;
+//using Weather_site.UI.Models;
 
 namespace Weather_site.API.Controllers
 {

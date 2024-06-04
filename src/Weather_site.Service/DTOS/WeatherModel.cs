@@ -1,10 +1,10 @@
-﻿using Weather_site.Core.Entities;
+﻿
 
-namespace Weather_site.API.DTOS
+namespace Weather_site.Service.DTOS
 {
     public class WeatherModel
     {
-        public Guid Id { get; set; } 
+        public Guid Id { get; set; }
         public double Temp { get; set; }
         public double MinT { get; set; }
         public double MaxT { get; set; }
@@ -31,7 +31,7 @@ namespace Weather_site.API.DTOS
         public DateTime Date { get; set; } = DateTime.Now;
         public Guid WindId { get; set; }
     }
-    public class CityDTO 
+    public class CityDTO
     {
         public Guid Id { get; set; }
         public string Name { get; set; }

@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using ProjectInit.Core.Context;
 using Weather_site.Core.Entities;
 using Wind = Weather_site.Core.Entities.Wind;
 

@@ -1,0 +1,85 @@
+﻿@page "/weatherCreate"
+@inject WeatherService weatherService
+@inject NavigationManager NavigationManager
+<h3>WeatherCreate</h3>
+
+<EditForm Model="weather" OnSubmit="HandleSubmit">
+    <div class="row mt-5">
+        <div class="col-12 col-md-3 border border-dark rounded shadow-sm mx-auto">
+            <div class="form-group">
+                <h2>Add Weather Data</h2>
+            </div>
+            <div class="form-floating mb-3">
+                <InputText class="form-control" @bind-Value="CityId" id="cityId" placeholder="City ID" />
+                <label for="cityId">City ID</label>
+            </div>
+            <div class="form-floating mb-3">
+                <InputNumber TValue="double" class="form-control" @bind-Value="weather.Temp" id="temp" placeholder="Temperature" />
+                <label for="temp">Temperature</label>
+            </div>
+            <div class="form-floating mb-3">
+                <InputNumber TValue="double" class="form-control" @bind-Value="weather.MinT" id="minTemp" placeholder="Min Temperature" />
+                <label for="minTemp">Min Temperature</label>
+            </div>
+            <div class="form-floating mb-3">
+                <InputNumber TValue="double" class="form-control" @bind-Value="weather.MaxT" id="maxTemp" placeholder="Max Temperature" />
+                <label for="maxTemp">Max Temperature</label>
+            </div>
+            <div class="form-floating mb-3">
+                <InputNumber TValue="double" class="form-control" @bind-Value="weather.FeelsLikeT" id="feelsLikeTemp" placeholder="Feels Like Temperature" />
+                <label for="feelsLikeTemp">Feels Like Temperature</label>
+            </div>
+            <div class="form-floating mb-3">
+                <InputText class="form-control" @bind-Value="weather.Icon" id="icon" placeholder="Icon" />
+                <label for="icon">Icon</label>
+            </div>
+            <div class="form-floating mb-3">
+                <InputNumber TValue="int" class="form-control" @bind-Value="weather.Pressure" id="pressure" placeholder="Pressure" />
+                <label for="pressure">Pressure</label>
+            </div>
+            <div class="form-floating mb-3">
+                <InputNumber TValue="int" class="form-control" @bind-Value="weather.SeaLevel" id="seaLevel" placeholder="Sea Level" />
+                <label for="seaLevel">Sea Level</label>
+            </div>
+            <div class="form-floating mb-3">
+                <InputNumber TValue="int" class="form-control" @bind-Value="weather.GrndLevel" id="grndLevel" placeholder="Ground Level" />
+                <label for="grndLevel">Ground Level</label>
+            </div>
+            <div class="form-floating mb-3">
+                <InputDate class="form-control" @bind-Value="weather.Date" id="date" placeholder="Date" />
+                <label for="date">Date</label>
+            </div>
+            <div class="form-floating mb-3">
+                <InputText class="form-control" @bind-Value="WindId" id="windId" placeholder="Wind ID" />
+                <label for="windId">Wind ID</label>
+            </div>
+            <div class="form-floating mb-3 text-center">
+                <button class="btn btn-primary" type="submit">Create</button>
+            </div>
+        </div>
+    </div>
+</EditForm>
+
+@code {
+    [Parameter] public Guid? Id { get; set; }
+
+    public WeatherModel weather { get; set; } = new WeatherModel();
+    public string CityId { get; set; }
+    public string WindId { get; set; }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (Id is not null)
+        {
+            var result = await weatherService.GetByIdAsync((Guid)Id);
+            CityId = result.City.Id.ToString();
+            WindId = result.Wind.Id.ToString();
+        }
+    }
+
+    private async Task HandleSubmit()
+    {
+        await weatherService.AddAsync(weather);
+        NavigationManager.NavigateTo("/weather");
+    }
+}

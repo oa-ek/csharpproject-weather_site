@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using Weather_site.Core.Entities;
-using Weather_site.API.DTOS;
+using Weather_site.Service.DTOS;
 
 
 namespace Weather_site.Service

@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Weather_site.API.DTOS;
 using Weather_site.Core.Entities;
 using Weather_site.Repositories.Cities;
 using Weather_site.Repositories.Countries;
 using Weather_site.Repositories.Weathers;
 using Weather_site.Repositories.Winds;
+using Weather_site.Service.DTOS;
 
 namespace Weather_site.API.Controllers
 {

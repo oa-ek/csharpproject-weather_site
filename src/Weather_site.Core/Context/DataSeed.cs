@@ -8,13 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using Weather_site.Core.Entities;
 
-namespace ProjectInit.Core.Context
+namespace Weather_site.Core.Context
 {
     public static class DataSeed
     {
         public static void Seed(this ModelBuilder builder)
         {
-          //  var (adminID, userID) = _seedRoles(builder);
+            //  var (adminID, userID) = _seedRoles(builder);
 
             var UkraineId = _seedCountry(builder);
             var CitiesId = _seedCity(builder, UkraineId);

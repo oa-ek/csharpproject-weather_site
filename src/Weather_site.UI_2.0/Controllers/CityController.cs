@@ -5,7 +5,7 @@ using Weather_site.Core.Entities;
 using Weather_site.Repositories.Cities;
 using Weather_site.Repositories.Countries;
 
-namespace Weather_site.UI.Controllers
+namespace Weather_site.UI_2._0.Controllers
 {
     public class CityController : Controller
     {

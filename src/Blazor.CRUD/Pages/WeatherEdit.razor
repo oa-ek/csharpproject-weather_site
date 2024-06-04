@@ -1,0 +1,89 @@
+﻿@page "/weatherEdit/{Id:guid?}"
+@using AutoMapper
+@using Weather_site.Service
+@inject NavigationManager NavigationManager
+@inject IWeatherService WeatherService
+
+<h3>WeatherEdit</h3>
+
+<EditForm Model="@weather" class="form-group" OnValidSubmit="HandleSubmit">
+    <div class="row mt-5">
+        <div class="col-12 col-md-3 border border-dark rounded shadow-sm mx-auto ">
+            <div class="form-group">
+                <h2>Weather Data</h2>
+            </div>
+            <div class="form-floating mb-3">
+                <InputText class="form-control" @bind-Value="CityId" id="cityId" placeholder="City ID" />
+                <label for="cityId">City ID</label>
+            </div>
+            <div class="form-floating mb-3">
+                <InputNumber TValue="double" class="form-control" @bind-Value="@weather.Temp" id="tempInput" placeholder="Temperature" />
+                <label for="tempInput">Temperature</label>
+            </div>
+            <div class="form-floating mb-3">
+                <InputNumber TValue="double" class="form-control" @bind-Value="@weather.MinT" id="minTempInput" placeholder="Min Temperature" />
+                <label for="minTempInput">Min Temperature</label>
+            </div>
+            <div class="form-floating mb-3">
+                <InputNumber TValue="double" class="form-control" @bind-Value="@weather.MaxT" id="maxTempInput" placeholder="Max Temperature" />
+                <label for="maxTempInput">Max Temperature</label>
+            </div>
+            <div class="form-floating mb-3">
+                <InputNumber TValue="double" class="form-control" @bind-Value="@weather.FeelsLikeT" id="feelsLikeTempInput" placeholder="Feels Like Temperature" />
+                <label for="feelsLikeTempInput">Feels Like Temperature</label>
+            </div>
+            <div class="form-floating mb-3">
+                <InputText class="form-control" @bind-Value="@weather.Icon" id="iconInput" placeholder="Icon" />
+                <label for="iconInput">Icon</label>
+            </div>
+            <div class="form-floating mb-3">
+                <InputNumber TValue="int" class="form-control" @bind-Value="@weather.Pressure" id="pressureInput" placeholder="Pressure" />
+                <label for="pressureInput">Pressure</label>
+            </div>
+            <div class="form-floating mb-3">
+                <InputNumber TValue="int" class="form-control" @bind-Value="@weather.SeaLevel" id="seaLevelInput" placeholder="Sea Level" />
+                <label for="seaLevelInput">Sea Level</label>
+            </div>
+            <div class="form-floating mb-3">
+                <InputNumber TValue="int" class="form-control" @bind-Value="@weather.GrndLevel" id="grndLevelInput" placeholder="Ground Level" />
+                <label for="grndLevelInput">Ground Level</label>
+            </div>
+            <div class="form-floating mb-3">
+                <InputDate class="form-control" @bind-Value="@weather.Date" id="dateInput" placeholder="Date" />
+                <label for="dateInput">Date</label>
+            </div>
+            <div class="form-floating mb-3">
+                <InputText class="form-control" @bind-Value="WindId" id="windId" placeholder="Wind ID" />
+                <label for="windId">Wind ID</label>
+            </div>
+            <div class="form-floating mb-3 text-center">
+                <button class="btn btn-primary" type="submit">Edit</button>
+            </div>
+        </div>
+    </div>
+</EditForm>
+
+@code {
+    [Parameter]
+    public Guid? Id { get; set; }
+    public WeatherModel weather = new WeatherModel();
+    public string CityId { get; set; }
+    public string WindId { get; set; }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (Id.HasValue)
+        {
+            weather = await WeatherService.GetByIdAsync(Id.Value);
+        }
+    }
+
+    private async Task HandleSubmit()
+    {
+        if (Id.HasValue)
+        {
+            await WeatherService.UpdateAsync(weather);
+        }
+        NavigationManager.NavigateTo("/weather");
+    }
+}

@@ -8,10 +8,10 @@ using Weather_site.Repositories.Winds;
 using System.Threading.Tasks;
 using System;
 using System.Net.Http;
-using Weather_site.UI.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Weather_site.UI_2._0.Models;
 
-namespace Weather_site.UI.Controllers
+namespace Weather_site.UI_2._0.Controllers
 {
     public class WeatherController : Controller
     {
@@ -28,7 +28,7 @@ namespace Weather_site.UI.Controllers
             _windRepository = windRepository;
         }
 
-        public async Task<IActionResult> GetFromAPI(Guid Id) 
+        public async Task<IActionResult> GetFromAPI(Guid Id)
         {
             var weather = await _weatherRepository.GetAsync(Id);
             return View(weather);
@@ -128,7 +128,7 @@ namespace Weather_site.UI.Controllers
                         country = country1;
 
                     }
-    
+
 
 
                     var city = await _cityRepository.GetByName(weatherInfo.Name);
