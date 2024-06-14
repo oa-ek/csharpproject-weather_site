@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Edit Wind";
+}
+@model Weather_site.Core.Entities.Wind
+
+<h1>Edit Wind Entry</h1>
+
+<form asp-action="EditWind" enctype="multipart/form-data">
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="mb-3">
+                @Html.LabelFor(model => model.Speed, "Speed")
+                @Html.EditorFor(model => model.Speed, new { htmlAttributes = new { @class = "form-control" } })
+                <span asp-validation-for="Speed" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                @Html.LabelFor(model => model.Humidity, "Humidity")
+                @Html.EditorFor(model => model.Humidity, new { htmlAttributes = new { @class = "form-control" } })
+                <span asp-validation-for="Humidity" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                @Html.LabelFor(model => model.Gust, "Gust")
+                @Html.EditorFor(model => model.Gust, new { htmlAttributes = new { @class = "form-control" } })
+                <span asp-validation-for="Gust" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <button class="btn btn-primary btn-block" type="submit">Save</button>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

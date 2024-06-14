@@ -5,49 +5,82 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Weather_site.UI_2._0</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Weather_site.UI_2._0.styles.css" asp-append-version="true" />
+    <link href="~/asset/fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="~/asset/style.css">
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Weather" asp-action="GetFromAPI">Weather_site</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Weather" asp-action="GetFromAPI">Weather</a>
+    <header class="site-header">
+        <div class="site-content">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Weather" asp-action="GetFromAPI">
+                    Weather_site
+                    <img src="images/logo.png" alt="" class="logo">
+                </a>
+
+                <div class="main-navigation">
+                    <ul class="menu">
+                        <li class="menu-item current-menu-item"><a class="nav-link" asp-area="" asp-controller="Weather" asp-action="GetFromAPI">Weather</a></li>
+                        <li class="menu-item"><a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Week Weather</a></li>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="menu-item"><a class="nav-link" asp-area="" asp-controller="WeatherCrud" asp-action="CreateWeather">CRUD Weather</a></li>
+                            <li class="menu-item"><a class="nav-link" asp-area="" asp-controller="WindCrud" asp-action="CreateWind">CRUD Wind</a></li>
+                            <li class="menu-item"><a class="nav-link" asp-area="" asp-controller="CityCrud" asp-action="CreateCity">CRUD City</a></li>
+                            <li class="menu-item"><a class="nav-link" asp-area="" asp-controller="CountryCrud" asp-action="CreateCountry">CRUD Country</a></li>
+                        }
+                        <li class="menu-item">
+                            <div class="dropdown">
+                                <button class="dropbtn">Maps</button>
+                                <div class="dropdown-content">
+                                    <a class="nav-link" asp-area="" asp-controller="Maps" asp-action="Index">Clouds</a>
+                                    <a class="nav-link" asp-area="" asp-controller="Maps" asp-action="Precipitation">Precipitation</a>
+                                    <a class="nav-link" asp-area="" asp-controller="Maps" asp-action="PressureNew">PressureNew</a>
+                                    <a class="nav-link" asp-area="" asp-controller="Maps" asp-action="TempNew">TempNew</a>
+                                    <a class="nav-link" asp-area="" asp-controller="Maps" asp-action="WindSpeed">WindSpeed</a>
+                                </div>
+                            </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Week Weather</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">CRUD Weather</a>
+                        <li class="menu-item">
+                            <partial name="_LoginPartial" />
                         </li>
                     </ul>
-                    <partial name="_LoginPartial" />
                 </div>
             </div>
-        </nav>
+        </div>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+    <div class="hero" data-bg-image="images/banner.jpg">
+        <div class="container">
+            <main role="main" class="pb-3 site-content">
+                @RenderBody()
+            </main>
+        </div>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="site-footer">
         <div class="container">
-            &copy; 2024 - Weather_site
+            <div class="row">
+                <div class="col-md-8">
+                    <form action="#" class="subscribe-form">
+                        <input type="text" placeholder="Enter your email to subscribe...">
+                        <input type="submit" value="Subscribe">
+                    </form>
+                </div>
+                <div class="col-md-3 col-md-offset-1">
+                    <div class="social-links">
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-google-plus"></i></a>
+                        <a href="#"><i class="fa fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <p class="colophon">Copyright 2014 Company name. Designed by Themezy. All rights reserved</p>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="asset/js/jquery-1.11.1.min.js"></script>
+    <script src="asset/js/plugins.js"></script>
+    <script src="asset/js/app.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

@@ -37,7 +37,6 @@ namespace Weather_site.UI_2._0
                 builder.Services.AddRepositories();
                 var app = builder.Build();
 
-                // Configure the HTTP request pipeline.
                 if (app.Environment.IsDevelopment())
                 {
                     app.UseMigrationsEndPoint();

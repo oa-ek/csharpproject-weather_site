@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Weather_site.UI_2._0.Models
+namespace Weather_site.UI.Models
 {
     public class WeatherAPI
     {
@@ -12,8 +12,10 @@ namespace Weather_site.UI_2._0.Models
         public string Name { get; set; }
         [JsonPropertyName("sys")]
         public SysAPI country { get; set; }
-        [JsonPropertyName("icon")]
-        public string icon { get; set; }
+        [JsonPropertyName("weather")]
+        public List<WeatherIcon> Weather { get; set; }
+
+
     }
     public class MainAPI
     {
@@ -31,6 +33,7 @@ namespace Weather_site.UI_2._0.Models
         public int sea_level { get; set; }
         [JsonPropertyName("grnd_level")]
         public int grnd_level { get; set; }
+      
     }
     public class WindAPI
     {
@@ -48,4 +51,10 @@ namespace Weather_site.UI_2._0.Models
         public string Country { get; set; }
 
     }
+    public class WeatherIcon
+    {
+        [JsonPropertyName("main")]
+        public string main { get; set; }
+    }
+
 }

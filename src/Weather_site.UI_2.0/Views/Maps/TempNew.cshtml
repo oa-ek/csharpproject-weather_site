@@ -1,0 +1,42 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "Maps";
+}
+@using Azure.Core
+@using Weather_site.Core.Entities
+@using System.Globalization
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+</head>
+<body>
+    <h1>Weather Map</h1>
+    <div id="map" style="width: 100%; height: 600px;"></div>
+
+    <script>
+
+        var map = L.map('map').setView([48.3794, 31.1656], 6);
+
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' }).addTo(map);
+
+        var apiKey = '8113fcc5a7494b0518bd91ef3acc074f';
+        var weatherUrl = `https://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=${apiKey}`;
+
+        L.tileLayer(weatherUrl, { attribution: '&copy; <a href="https://openweathermap.org/">OpenWeatherMap</a>' }).addTo(map);
+
+
+        L.Control.geocoder().addTo(map);
+    </script>
+</body>
+</html>

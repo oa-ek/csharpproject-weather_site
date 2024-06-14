@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "WindAdd";
+}
+@model Weather_site.Core.Entities.Wind
+
+<h1>Create Wind Entry</h1>
+
+<form asp-action="CreateWind" enctype="multipart/form-data">
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="mb-3">
+                @Html.LabelFor(model => model.Speed, "Speed")
+                @Html.EditorFor(model => model.Speed, new { htmlAttributes = new { @class = "form-control" } })
+                <span asp-validation-for="Speed" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                @Html.LabelFor(model => model.Humidity, "Humidity")
+                @Html.EditorFor(model => model.Humidity, new { htmlAttributes = new { @class = "form-control" } })
+                <span asp-validation-for="Humidity" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                @Html.LabelFor(model => model.Gust, "Gust")
+                @Html.EditorFor(model => model.Gust, new { htmlAttributes = new { @class = "form-control" } })
+                <span asp-validation-for="Gust" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <button class="btn btn-primary btn-block" type="submit">Save</button>
+        </div>
+    </div>
+</form>
+
+<h2>Existing Wind Entries</h2>
+<table class="table" style="color: white;">
+    <thead>
+        <tr>
+            <th>Speed</th>
+            <th>Humidity</th>
+            <th>Gust</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var wind in ViewBag.Winds as List<Weather_site.Core.Entities.Wind>)
+        {
+                <tr>
+                    <td>@wind.Speed</td>
+                    <td>@wind.Humidity</td>
+                    <td>@wind.Gust</td>
+                    <td>
+                        <a asp-action="EditWind" asp-route-id="@wind.Id" class="btn btn-warning">Edit</a>
+                        <a asp-action="DeleteWind" asp-route-id="@wind.Id" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

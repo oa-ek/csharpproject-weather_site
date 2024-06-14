@@ -1,77 +1,68 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "7-Day Weather Forecast";
 }
 @using Azure.Core
 @using Weather_site.Core.Entities
 @using System.Globalization
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Прогноз погоди на 6 днів вперед</title>
-</head>
-<body>
-    <h1>Прогноз погоди на 6 днів вперед</h1>
+<main class="site-content">
+    <h1 class="forecast-title">7-Day Weather Forecast</h1>
 
-    <form method="get">
-        <label for="city">Введіть місто:</label>
-        <input type="text" id="city" name="city" required>
-        <button type="submit">Отримати прогноз</button>
+    <form method="get" class="forecast-form">
+        <label for="city" class="forecast-label">Enter City:</label>
+        <input type="text" id="city" name="city" class="forecast-input" required>
+        <button type="submit" class="forecast-button">Get Forecast</button>
     </form>
 
     @if (Context.Request.Query.ContainsKey("city"))
     {
         string city = Context.Request.Query["city"];
         string apiKey = "8113fcc5a7494b0518bd91ef3acc074f";
-
         string apiUrl = $"https://api.openweathermap.org/data/2.5/forecast?q={city}&appid={apiKey}&units=metric";
 
         using (var client = new System.Net.Http.HttpClient())
         {
             var response = await client.GetAsync(apiUrl);
             var content = await response.Content.ReadAsStringAsync();
-
             dynamic data = Newtonsoft.Json.JsonConvert.DeserializeObject(content);
 
             if (data != null && data.list != null && data.list.Count > 0)
             {
-                <h2>Прогноз погоди для міста @data.city.name</h2>
+                <h2 class="forecast-city">Weather Forecast for @data.city.name</h2>
 
-                <table>
-                    <tr>
-                        <th>Дата</th>
-                        <th>Погода</th>
-                        <th>Температура, °C</th>
-                    </tr>
-
-                    @foreach (var item in data.list)
-                    {
-                        DateTime date;
-                        if (DateTime.TryParseExact(item.dt_txt.ToString(), "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.None, out date))
+                <div class="forecast-table-container">
+                    <table class="forecast-table">
+                        <tr>
+                            <th>Date</th>
+                            <th>Weather</th>
+                            <th>Temperature (°C)</th>
+                        </tr>
+                        @foreach (var item in data.list)
                         {
-                            string weatherDescription = item.weather[0].description;
-                            double temperature = Convert.ToDouble(item.main.temp);
+                            DateTime date;
+                            if (DateTime.TryParseExact(item.dt_txt.ToString(), "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.None, out date))
+                            {
+                                string weatherDescription = item.weather[0].description;
+                                double temperature = Convert.ToDouble(item.main.temp);
+                                string icon = item.weather[0].icon;
 
-                            <tr>
-                                <td>@date.ToString("dd.MM.yyyy")</td>
-                                <td>@weatherDescription</td>
-                                <td>@temperature</td>
-                            </tr>
+                                <tr>
+                                    <td>@date.ToString("ddd, MMM dd, HH:mm")</td>
+                                    <td>
+                                        <img src="http://openweathermap.org/img/wn/@(item.weather[0].icon).png" alt="@weatherDescription" />
+                                        @weatherDescription
+                                    </td>
+                                    <td>@temperature</td>
+                                </tr>
+                            }
                         }
-                        else
-                        {
-                            <tr>
-                                <td colspan="3">Невірний формат дати</td>
-                            </tr>
-                        }
-                    }
-                </table>
+                    </table>
+                </div>
             }
             else
             {
-                <p>Прогноз погоди недоступний для цього міста.</p>
+                <p class="forecast-error">Weather forecast not available for this city.</p>
             }
         }
     }
-</body>
-</html>
+</main>

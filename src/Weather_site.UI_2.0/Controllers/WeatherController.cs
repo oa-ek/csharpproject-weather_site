@@ -8,10 +8,10 @@ using Weather_site.Repositories.Winds;
 using System.Threading.Tasks;
 using System;
 using System.Net.Http;
+using Weather_site.UI.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Weather_site.UI_2._0.Models;
 
-namespace Weather_site.UI_2._0.Controllers
+namespace Weather_site.UI.Controllers
 {
     public class WeatherController : Controller
     {
@@ -28,7 +28,7 @@ namespace Weather_site.UI_2._0.Controllers
             _windRepository = windRepository;
         }
 
-        public async Task<IActionResult> GetFromAPI(Guid Id)
+        public async Task<IActionResult> GetFromAPI(Guid Id) 
         {
             var weather = await _weatherRepository.GetAsync(Id);
             return View(weather);
@@ -60,21 +60,39 @@ namespace Weather_site.UI_2._0.Controllers
 
         public async Task<IActionResult> Create(Weather weather)
         {
-
             if (ModelState.IsValid)
             {
                 await _weatherRepository.CreateAsync(weather);
                 return RedirectToAction("Index");
             }
+
+            var cities = await _cityRepository.GetAllAsync();
+            var winds = await _windRepository.GetAllAsync();
+
+            ViewBag.Cities = new SelectList(cities, "Id", "Name", weather.City?.Id);
+            ViewBag.Winds = new SelectList(winds, "Id", "Speed", weather.Wind?.Id);
+
             return View(weather);
         }
 
         public async Task<IActionResult> Edit(Guid id)
         {
             var weather = await _weatherRepository.GetAsync(id);
+            if (weather == null)
+            {
+                return NotFound();
+            }
+
+            var cities = await _cityRepository.GetAllAsync();
+            var winds = await _windRepository.GetAllAsync();
+
+            ViewBag.Cities = new SelectList(cities, "Id", "Name", weather.City?.Id);
+            ViewBag.Winds = new SelectList(winds, "Id", "Speed", weather.Wind?.Id);
+
             return View(weather);
         }
 
+        [HttpPost]
         public async Task<IActionResult> Edit(Weather weather)
         {
             if (ModelState.IsValid)
@@ -82,8 +100,16 @@ namespace Weather_site.UI_2._0.Controllers
                 await _weatherRepository.UpdateAsync(weather);
                 return RedirectToAction("Index");
             }
+
+            var cities = await _cityRepository.GetAllAsync();
+            var winds = await _windRepository.GetAllAsync();
+
+            ViewBag.Cities = new SelectList(cities, "Id", "Name", weather.City?.Id);
+            ViewBag.Winds = new SelectList(winds, "Id", "Speed", weather.Wind?.Id);
+
             return View(weather);
         }
+
         [HttpPost]
 
         public async Task<IActionResult> Delete(Guid id)
@@ -130,8 +156,24 @@ namespace Weather_site.UI_2._0.Controllers
                     }
 
 
-
                     var city = await _cityRepository.GetByName(weatherInfo.Name);
+
+                    if (country != null)
+                    {
+                        City city1 = new City
+                        {
+                            Id = CountryId,
+                            Name = weatherInfo.Name,
+                            Country = country
+                        };
+
+                        await _cityRepository.CreateAsync(city1);
+                        city = city1;
+                    }
+
+
+
+                    city = await _cityRepository.GetByName(weatherInfo.Name);
                     Guid WeatherId = Guid.NewGuid();
                     var weather = new Weather
                     {
@@ -141,9 +183,9 @@ namespace Weather_site.UI_2._0.Controllers
                         MinT = weatherInfo.main.minM,
                         MaxT = weatherInfo.main.maxH,
                         FeelsLikeT = weatherInfo.main.feels_like,
-                        //Wind = wind,
+                        Wind = wind,
                         Date = DateTime.Now,
-                        Icon = weatherInfo.icon,
+                        Icon = weatherInfo.Weather[0].main,
                         Pressure = weatherInfo.main.pressure,
                         SeaLevel = weatherInfo.main.sea_level,
                         GrndLevel = weatherInfo.main.grnd_level,

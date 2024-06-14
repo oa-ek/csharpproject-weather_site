@@ -4,49 +4,35 @@
     ViewBag.Title = "Weather"; 
 } 
 
-<h1>Search City and Get Weather Forecast</h1> 
+<h1 class="weather-title">Search City and Get Weather Forecast</h1> 
 
-<form asp-action="WeatherDetail" asp-controller="Weather"> 
-    <input id="txtCity" type="text" name="city" /> 
-    <button type="submit">Get Weather Forecast</button> 
+<form asp-action="WeatherDetail" asp-controller="Weather" class="weather-form"> 
+    <input id="txtCity" class="weather-input" type="text" name="city" placeholder="Enter city name" /> 
+    <button type="submit" class="weather-button">Get Weather Forecast</button> 
 </form> 
 
-<div> 
-    <h2>Weather Forecast</h2> 
+<div class="weather-container"> 
+    <h2 class="weather-subtitle">Weather Forecast</h2> 
     @if (Model != null && Model.City != null && Model.City.Country != null)
     { 
-                <table> 
-                    <tr> 
-                        <td>Weather Symbol Icon <img id="imgWeatherIconUrl" src="@Model.Icon" title="Weather Icon" /></td> 
-                    </tr> 
-                    <tr> 
-                        <td> 
-                            <strong>City: @Model.City.Name</strong> 
-                            <span id="lblCity"></span> 
-                    @if (!string.IsNullOrEmpty(Model.City.Country.Name))
-                    {
-                        <span id="lblCountry">,<strong>@Model.City.Country.Name</strong></span>
-                    } 
-                        </td> 
-                    </tr> 
-                    <tr> 
-                        <td> 
-                            Temperature: <label id="lblTemp">@Model.Temp</label><br />
-                            Temperature (Feels Like): <label id="lblTempFeelsLike"> @Model.FeelsLikeT</label><br />
-                            Temperature (Min): <label id="lblTempMin"> @Model.MinT</label><br /> 
-                            Temperature (Max): <label id="lblTempMax" >@Model.MaxT</label><br /> 
-                            Pressure: <label id="lblPressure" >@Model.Pressure</label><br /> 
-                           @*  Humidity: <label id="lblHumidity" >@Model.Wind.Humidity</label><br /> 
-                            Gust: <label id="lblGust" >@Model.Wind.Gust</label><br />  *@
-                        </td> 
-                    </tr> 
-                </table> 
+        <div class="weather-details">
+            <div class="weather-info">
+                <p><strong>City:</strong> @Model.City.Name, <strong>@Model.City.Country.Name</strong></p>
+                <p><strong>Temperature:</strong> @Model.Temp °C</p>
+                <p><strong>Feels Like:</strong> @Model.FeelsLikeT °C</p>
+                <p><strong>Min Temperature:</strong> @Model.MinT °C</p>
+                <p><strong>Max Temperature:</strong> @Model.MaxT °C</p>
+                <p><strong>Pressure:</strong> @Model.Pressure hPa</p>
+                <p><strong>Humidity:</strong> @Model.Wind.Humidity %</p>
+                <p><strong>Gust:</strong> @Model.Wind.Gust m/s</p>
+                <p><strong>Weather:</strong> @Model.Icon</p>
+            </div>
+        </div>
     }
     else
     { 
-                <p>No weather data available.</p> 
+        <p>No weather data available.</p> 
     } 
 </div> 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-

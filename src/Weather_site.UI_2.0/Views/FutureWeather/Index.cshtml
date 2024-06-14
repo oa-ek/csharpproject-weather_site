@@ -1,68 +1,91 @@
-﻿
-@model Views_FutureWeather_Index
-@{
+﻿@{
     ViewBag.Title = "FutureWeather";
 }
-@using Azure.Core
-@using Weather_site.Core.Entities
+
 <!DOCTYPE html>
 <html>
 <head>
     <title>Прогноз погоди на 3 дні вперед</title>
 </head>
 <body>
-    <h1>Прогноз погоди на 3 дні вперед</h1>
+    <h1>Прогноз погоди</h1>
 
-    <form method="get">
+    <form method="get" action="/FutureWeather/Index">
         <label for="city">Введіть місто:</label>
         <input type="text" id="city" name="city" required>
         <button type="submit">Отримати прогноз</button>
     </form>
 
-    @if (Context.Request.Query.ContainsKey("city"))
+    @if (ViewBag.WeatherData != null)
     {
-        string city = Context.Request.Query["city"];
-        string apiKey = "8113fcc5a7494b0518bd91ef3acc074f";
+        <h2>Прогноз погоди для міста @ViewBag.WeatherData.city.name</h2>
 
-        string apiUrl = $"https://api.openweathermap.org/data/2.5/forecast?q={city}&appid={apiKey}&units=metric";
-
-        using (var client = new System.Net.Http.HttpClient())
+        <h3>Сьогодні</h3>
+        @if (ViewBag.TodayWeather != null)
         {
-            var response = await client.GetAsync(apiUrl);
-            var content = await response.Content.ReadAsStringAsync();
+            var todayWeather = ViewBag.TodayWeather;
+            DateTime date = DateTime.Parse((string)todayWeather.dt_txt);
+            string weatherDescription = todayWeather.weather[0].description;
+            double temperature = Convert.ToDouble(todayWeather.main.temp);
+            string icon = todayWeather.weather[0].icon;
 
-            dynamic data = Newtonsoft.Json.JsonConvert.DeserializeObject(content);
+            <p>
+                <strong>Дата:</strong> @date.ToString("dd.MM.yyyy")<br>
+                <strong>Погода:</strong> @weatherDescription <img src="http://openweathermap.org/img/wn/" alt="icon" /><br>
+                <strong>Температура:</strong> @temperature °C
+            </p>
+        }
+        else
+        {
+            <p>Прогноз погоди недоступний для цього дня.</p>
+        }
 
-            if (data != null && data.list != null && data.list.Count > 0)
+        <h3>На тиждень вперед</h3>
+        @if (ViewBag.WeekWeather != null && ViewBag.WeekWeather.Count > 0)
+        {
+            @foreach (var item in ViewBag.WeekWeather)
             {
-                <h2>Прогноз погоди для міста @data.city.name</h2>
+                DateTime date = DateTime.Parse((string)item.dt_txt);
+                string weatherDescription = item.weather[0].description;
+                double temperature = Convert.ToDouble(item.main.temp);
+                string icon = item.weather[0].icon;
 
-                <table>
-                    <tr>
-                        <th>Дата</th>
-                        <th>Погода</th>
-                        <th>Температура, °C</th>
-                    </tr>
-
-                    @foreach (var item in data.list)
-                    {
-                        DateTime date = DateTime.Parse(item.dt_txt);
-                        string weatherDescription = item.weather[0].description;
-                        double temperature = Convert.ToDouble(item.main.temp);
-
-                        <tr>
-                            <td>@date.ToString("dd.MM.yyyy:HH")</td>
-                            <td>@weatherDescription</td>
-                            <td>@temperature</td>
-                        </tr>
-                    }
-                </table>
-            }
-            else
-            {
-                <p>Прогноз погоди недоступний для цього міста.</p>
+                <p>
+                    <strong>Дата:</strong> @date.ToString("dd.MM.yyyy")<br>
+                    <strong>Погода:</strong> @weatherDescription <img src="http://openweathermap.org/img/wn/" alt="icon" /><br>
+                    <strong>Температура:</strong> @temperature °C
+                </p>
             }
         }
+        else
+        {
+            <p>Прогноз погоди недоступний на цей тиждень.</p>
+        }
     }
+    else if (ViewBag.City != null)
+    {
+        <p>Прогноз погоди недоступний для міста @ViewBag.City.</p>
+    }
+
+    <div id="openweathermap-widget-21"></div>
+    <script src='//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/d3.min.js'></script>
+    <script>
+        window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];
+        window.myWidgetParam.push({
+            id: 21,
+            cityid: '2643743',
+            appid: '8113fcc5a7494b0518bd91ef3acc074f',
+            units: 'metric',
+            containerid: 'openweathermap-widget-21',
+        });
+        (function () {
+            var script = document.createElement('script');
+            script.async = true;
+            script.charset = "utf-8";
+            script.src = "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js";
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(script, s);
+        })();
+    </script>
 </body>
 </html>

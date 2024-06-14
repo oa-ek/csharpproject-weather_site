@@ -39,11 +39,11 @@
                 @Html.DropDownListFor(model => model.FeelsLikeT, ViewBag.TemperatureList as SelectList, "Select Feels Like Temperature", new { @class = "form-control" })
                 <span asp-validation-for="FeelsLikeT" class="text-danger" />
             </div>
-@*             <div class="mb-3">
+            <div class="mb-3">
                 @Html.DisplayNameFor(model => model.Wind)
                 @Html.DropDownList("WindId", ViewBag.Winds as SelectList, "Select Wind", new { @class = "form-control" })
                 <span asp-validation-for="Wind" class="text-danger"></span>
-            </div> *@
+            </div>
             <div class="form-group mt-3">
                 @Html.DisplayNameFor(model => model.Date)
                 @Html.DropDownListFor(model => model.Date, ViewBag.DateList as SelectList, "Select Date", new { @class = "form-control" })

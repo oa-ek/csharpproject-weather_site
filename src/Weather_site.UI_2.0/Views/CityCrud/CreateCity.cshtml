@@ -1,0 +1,64 @@
+﻿@{
+    ViewBag.Title = "CityAdd";
+}
+@model Weather_site.Core.Entities.City
+
+<h1>Create City Entry</h1>
+
+<form asp-action="CreateCity" enctype="multipart/form-data">
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="mb-3">
+                @Html.LabelFor(model => model.Name, "Name")
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                @Html.LabelFor(model => model.CountryId, "Country")
+                @Html.DropDownListFor(model => model.CountryId, ViewBag.Countries as SelectList, "Select a country", new { @class = "form-control" })
+                <span asp-validation-for="CountryId" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <button class="btn btn-primary btn-block" type="submit">Save</button>
+        </div>
+    </div>
+</form>
+
+<h2>Existing Cities</h2>
+<table class="table" style="color: white;">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Country</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var city in ViewBag.Cities as List<Weather_site.Core.Entities.City>)
+        {
+                <tr>
+                    <td>@city.Name</td>
+                    <td>@city.Country.Name</td>
+                    <td>
+                        <a asp-action="EditCity" asp-route-id="@city.Id" class="btn btn-warning">Edit</a>
+                        <a asp-action="DeleteCity" asp-route-id="@city.Id" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+

@@ -1,0 +1,67 @@
+﻿@{
+    ViewBag.Title = "Edit Weather";
+}
+@model Weather_site.Core.Entities.Weather
+
+<h1>Edit Weather Entry</h1>
+
+<form asp-action="EditWeather" enctype="multipart/form-data">
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="mb-3">
+                @Html.LabelFor(model => model.CityId, "City")
+                @Html.DropDownListFor(model => model.CityId, ViewBag.Cities as SelectList, "Select a city", new { @class = "form-control" })
+                <span asp-validation-for="CityId" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                @Html.LabelFor(model => model.Temp, "Temperature")
+                @Html.EditorFor(model => model.Temp, new { htmlAttributes = new { @class = "form-control" } })
+                <span asp-validation-for="Temp" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                @Html.LabelFor(model => model.MinT, "Minimum Temperature")
+                @Html.EditorFor(model => model.MinT, new { htmlAttributes = new { @class = "form-control" } })
+                <span asp-validation-for="MinT" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                @Html.LabelFor(model => model.MaxT, "Maximum Temperature")
+                @Html.EditorFor(model => model.MaxT, new { htmlAttributes = new { @class = "form-control" } })
+                <span asp-validation-for="MaxT" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="mb-3">
+                @Html.LabelFor(model => model.FeelsLikeT, "Feels Like Temperature")
+                @Html.EditorFor(model => model.FeelsLikeT, new { htmlAttributes = new { @class = "form-control" } })
+                <span asp-validation-for="FeelsLikeT" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                @Html.LabelFor(model => model.WindId, "Wind")
+                @Html.DropDownListFor(model => model.WindId, ViewBag.Winds as SelectList, "Select a Wind", new { @class = "form-control" })
+                <span asp-validation-for="WindId" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-3">
+                @Html.LabelFor(model => model.Date, "Date")
+                @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" } })
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <button class="btn btn-primary btn-block" type="submit">Save</button>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+

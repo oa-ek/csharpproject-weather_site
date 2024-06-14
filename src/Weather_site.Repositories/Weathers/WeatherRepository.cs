@@ -23,13 +23,5 @@ namespace Weather_site.Repositories.Weathers
                 .Include(w => w.Wind)
                 .FirstOrDefaultAsync(w => w.Id == id);
         }
-        public async Task<IEnumerable<Weather>> GetAllAsync()
-        {
-            return await _ctx.Weathers
-                                 .Include(w => w.City)
-                                 .ThenInclude(c => c.Country)
-                                 .Include(w => w.Wind)
-                                 .ToListAsync();
-        }
     }
 }

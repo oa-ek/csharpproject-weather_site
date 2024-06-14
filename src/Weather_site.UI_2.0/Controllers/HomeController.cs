@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-//using Weather_site.UI.Models;
+using Weather_site.UI.Models;
 using Weather_site.UI_2._0.Models;
 
-namespace Weather_site.UI_2._0.Controllers
+namespace Weather_site.UI.Controllers
 {
     public class HomeController : Controller
     {
@@ -30,6 +30,6 @@ namespace Weather_site.UI_2._0.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-
+        
     }
 }

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -7,6 +7,10 @@
     <UserSecretsId>aspnet-Weather_site.UI_2._0-0440d4f6-e167-4dbb-bb38-e741236db80b</UserSecretsId>
     <RootNamespace>Weather_site.UI_2._0</RootNamespace>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Shared\Header.cshtml" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.0" />
@@ -19,6 +23,22 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Weather_site.Repositories\Weather_site.Repositories.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Shared\Header.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\Shared\Header.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Shared\Header.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\css\" />
   </ItemGroup>
 
 </Project>
